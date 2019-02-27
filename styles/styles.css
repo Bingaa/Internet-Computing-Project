@@ -129,5 +129,8 @@ body {
 .dp{
   display: block;
   margin-right: auto; 
-  margin-left: auto; 
+  margin-left: auto;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
 }
