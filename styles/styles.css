@@ -61,6 +61,9 @@ body {
    text-align: center; 
  }
 
+ .white-card th, td {
+  border-bottom: 1px solid #ddd;
+}
  .white-card h2{ 
   color:rgb(153, 184, 241); 
   text-align: center; 
@@ -124,6 +127,8 @@ body {
 
 .profile-pic-icon { 
   border-radius: 50%; 
+  width: 100px; 
+  height: 100px; 
 }
 .info {
   display: inline-block;
