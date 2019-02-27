@@ -120,3 +120,8 @@ body {
 .topnav a.active {
   color: rgb(75, 37, 34); 
 }
+
+.profile-pic-icon { 
+  border-radius: 50%; 
+  
+}

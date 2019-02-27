@@ -3,6 +3,7 @@
 <head> 
     <link rel="stylesheet" type="text/css" href="../styles/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script type="text/javascript" src="../scripts/search.js"></script>
 </head>
 
 <body> 
@@ -12,10 +13,18 @@
             <a class="active" href="search.html"><i class="fa fa-fw fa-search"></i></a> 
             <a href="messages.html"><i class="fas fa-comment"></i></a> 
     </div>
-    <div class="white-card-wide" style="margin-top: 100px;">
+    <div class="white-card" style="margin-top: 50px;">
         
-        <h2>Your Profile</h2>
+        <h2>Search</h2>
+        <p>Find your friends and family that you wish to get in contact with!</p>
+        <input type="text" id="search" placeholder="Search" onKeyUp="searchContacts(this.value);">
+
+        <div class="white-card" style="margin-top: 50px;">
+            <img class="profile-pic-icon" src="../images/profiles/kyuYang69.jpg">
+        </div>
 
     </div>
+
+  
 
 </body>
