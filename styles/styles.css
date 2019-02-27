@@ -1,25 +1,26 @@
 body {
   background-color: #f8f8f8;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  margin-top: 0px; 
+  margin-left: 0px; 
+  margin-right: 0px;
  }
 
  div { 
   background-color: white; 
-  border: 1px solid #e6e6e6; 
-  margin: 0 0 10px; 
+ }
+
+ .white-card { 
+  max-width: 400px;
+  margin-right: auto; 
+  margin-left: auto; 
   padding-left: 40px; 
   padding-right: 40px; 
   padding-bottom: 20px; 
   padding-top: 20px; 
  }
 
- .login { 
-  max-width: 400px;
-  margin-right: auto; 
-  margin-left: auto; 
- }
-
- .login input{ 
+ .white-card input{ 
   background-color: #f8f8f8;
   padding: 10px; 
   border: 1px solid #e6e6e6;
@@ -28,14 +29,14 @@ body {
   box-sizing: border-box; 
  }
 
- .login img{ 
+ .white-card img{ 
   margin-right: auto; 
   margin-left: auto; 
   display: block;
 
  }
 
- .login button {
+ .white-card button {
   background-color: rgb(153, 184, 241);
   border: none;
   color: white;
@@ -51,29 +52,65 @@ body {
   cursor: pointer;
 }
 
- .login button:hover { 
+ .white-card button:hover { 
    background-color: rgb(106, 146, 235);
  }
 
- .login p{ 
+ .white-card p{ 
    color: grey; 
    text-align: center; 
  }
 
- .login h3{ 
+ .white-card h2{ 
+  color:rgb(153, 184, 241); 
+  text-align: center; 
+}
+
+ .white-card h3{ 
   color:grey; 
   text-align: center; 
 }
 
- .login a{ 
+ .white-card a{ 
   color: rgb(75, 37, 34); 
   font-weight: bold; 
   text-decoration: none;
 }
 
-.login span {
+.white-card span {
   background:#fff; 
   padding:0 20px 0px 0px;
   position: relative;
   top: 10px;
  }
+
+ .white-card-wide { 
+  max-width: 604px;
+  margin-right: auto; 
+  margin-left: auto; 
+  border: 1px solid grey;
+ }
+
+
+ .topnav {
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid  #e6e6e6; 
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  background-color: rgb(106, 146, 235);
+}
+
+.topnav a.active {
+  background-color: rgb(106, 146, 235);
+}
