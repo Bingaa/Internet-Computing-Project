@@ -114,3 +114,85 @@ body {
 .topnav a.active {
   background-color: rgb(106, 146, 235);
 }
+
+img.profile-snap{
+    float:left;
+    width: 15%;
+    height:auto;
+    border-radius:50%;
+    margin-left:5%;
+    margin-right:5%;
+    text-align:center;
+    margin-top:1em;
+
+}
+/*div.profile-snap{*/
+    /*background-color:silver;*/
+    /*height:7em;*/
+    /*border-style:solid;*/
+    /*border-width:5px;*/
+    /*border-bottom:none;*/
+    /*border-color:slategrey;*/
+    /*float:left;*/
+
+/*}*/
+div.pinfo{
+    float:left;
+    background-color:inherit;
+}
+div.timestamp{
+    float:right;
+    clear:right;
+    max-height:50%;
+    background-color:inherit;
+
+    margin-right:1em;
+
+}
+div.timestamp>p{
+    color:green;
+}
+div.notification{
+    float:right;
+    clear:right;
+    max-height:50%;
+    background-color:inherit;
+    margin-right:1em;
+
+}
+img.notification{
+    border-radius:50%;
+    max-height:20px;
+    background-color:inherit;
+    width:auto;
+    height:20%;
+
+    max-width:100%;
+}
+
+img.active{
+    content:url("../images/exclamation.png");
+}
+
+img.non-active{
+    content:url("https://dejpknyizje2n.cloudfront.net/svgcustom/clipart/preview/moon-7361-16029-300x300.png");
+}
+
+div.contacts-bar{
+    display:block;
+}
+ul.conversation-list{
+    float:left;
+    width:20%;
+    list-style-type:none;
+}
+li.conversation{
+    background-color:silver;
+    height:7em;
+    border-style:solid;
+    border-width:5px;
+    border-bottom:none;
+    border-color:slategrey;
+    float:left;
+
+}
