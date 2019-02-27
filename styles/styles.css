@@ -73,7 +73,7 @@ body {
 
  .white-card a{ 
   color: rgb(75, 37, 34); 
-  font-weight: bold; 
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -85,12 +85,13 @@ body {
  }
 
  .white-card-wide { 
-  max-width: 604px;
+  max-width: 900px;
   margin-right: auto; 
   margin-left: auto; 
   border: 1px solid grey;
+  overflow: auto;
+  text-align: center; 
  }
-
 
  .topnav {
   overflow: hidden;
@@ -123,5 +124,17 @@ body {
 
 .profile-pic-icon { 
   border-radius: 50%; 
-  
+}
+.info {
+  display: inline-block;
+  margin: 20px;
+  vertical-align: center;
+}
+.dp{
+  display: block;
+  margin-right: auto; 
+  margin-left: auto;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
 }
