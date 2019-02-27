@@ -61,6 +61,9 @@ body {
    text-align: center; 
  }
 
+ .white-card th, td {
+  border-bottom: 1px solid #ddd;
+}
  .white-card h2{ 
   color:rgb(153, 184, 241); 
   text-align: center; 
@@ -73,24 +76,25 @@ body {
 
  .white-card a{ 
   color: rgb(75, 37, 34); 
-  font-weight: bold; 
+  font-weight: bold;
   text-decoration: none;
 }
 
 .white-card span {
   background:#fff; 
-  padding:0 20px 0px 0px;
+  padding:0 20px 0 0;
   position: relative;
   top: 10px;
  }
 
  .white-card-wide { 
-  max-width: 604px;
+  max-width: 900px;
   margin-right: auto; 
   margin-left: auto; 
-  border: 1px solid grey;
+  border: 1px solid #e6e6e6;
+  overflow: auto;
+  text-align: center; 
  }
-
 
  .topnav {
   overflow: hidden;
@@ -99,16 +103,22 @@ body {
 }
 
 .topnav a {
-  float: left;
-  color: white;
+  /*float: left;*/
+  color: grey;
   text-align: center;
-  padding: 10px 10px;
+  padding: 20px 20px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 30px;
+    float:right;
+}
+
+.topnav img { 
+  padding: 10px 20px; 
+  float: left; 
 }
 
 .topnav a:hover {
-  background-color: rgb(106, 146, 235);
+  color: rgb(75, 37, 34);
 }
 
 .topnav a.active {
@@ -203,7 +213,29 @@ ul.chat{
     margin-left:2em;
     list-style:none ;
 }
-d
+
 div.chat-window{
     float:right;
+    color: rgb(75, 37, 34);
+}
+
+.profile-pic-icon { 
+  border-radius: 50%; 
+  width: 100px; 
+  height: 100px; 
+}
+.info {
+  display: inline-block;
+  margin: 20px;
+  vertical-align: center;
+}
+.dp{
+  display: block;
+  margin-right: auto; 
+  margin-left: auto;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+
 }
