@@ -196,3 +196,14 @@ li.conversation{
     float:left;
 
 }
+ul.chat{
+    border-style:solid;
+    border-width:5px;
+    border-color:blue;
+    margin-left:2em;
+    list-style:none ;
+}
+d
+div.chat-window{
+    float:right;
+}
