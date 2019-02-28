@@ -12,40 +12,57 @@
 <body> 
     <div class="topnav">
         <img src="../images/LogoHorizontal.PNG" style="float:left; width:150px; height:60px; ">
-            <a class="active" href="profile.html"><i class="fa fa-fw fa-user"></i></a>
-            <a href="search.html"><i class="fa fa-fw fa-search"></i></a> 
-            <a href="messages.html"><i class="fas fa-comment"></i></a> 
+        <a href="../index.html"><i class="fas fa-sign-out-alt" title="Sign Out"></i></a>
+        <a class="active" href="profile.html"><i class="fa fa-fw fa-user" title="Profile"></i></a>
+        <a href="search.html"><i class="fa fa-fw fa-search" title="Search for Contacts"></i></a> 
+        <a href="messages.html"><i class="fas fa-comment" title="Messages"></i></a> 
     </div>
-    <div class="white-card-wide" style="margin-top: 50px;">
-        
-        
-        <img id="profile" class="dp" src="#" onerror="if (this.src != '../images/error.png') this.src = '../images/error.png';">
-         
-        <div class="info"><h2>FirstName LastName</h2><br>status<hr>
-        <table>
-        <tr>
-            <td>Job</td> 
-        </tr>
-        <tr>
-            <td>Location</td>
-        </tr>
-        <tr>
-          <td>Birthday</td> 
-        </tr>
-        <tr>
-            <td>Phone:</td> 
-          </tr>
-          <tr>
-                <td>Interests:</td> 
-        </tr>
-          <tr>
-            <td><strong>Change profile picture:</strong></td>
-        </tr>
-        <tr>
-            <td><input type="file" name="myFile" onchange="readURL(this);"/></td>  
-          </tr>
-      </table>
-    </div>
+    <div class="white-card-wide" style="margin-top: 50px;">        
+        <img id="profile" class="display-pic" src="../images/error.png">
+    
+        <div class="info"><h2>FirstName LastName</h2>
+            <h3 contenteditable="true" >Status</h3>
+
+            <table>
+              <tr> 
+                <td><p>Job: </p></td>
+                <td><input type="text"></td>
+              </tr>
+              <tr> 
+                <td><p>Location: </p></td>
+                <td><input type="text"></td>
+              </tr>
+              <tr> 
+                <td><p>Birthday: </p></td>
+                <td><input type="text"></td>
+              </tr>
+              <tr> 
+                <td><p>Phone: </p></td>
+                <td><input type="text"></td>
+              </tr>
+              <tr> 
+                <td><p>Interests: </p></td>
+                <td><input type="text"></td>
+              </tr>
+            </table>
+            <button>Save</button>
+        </div>
+
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+              <h2>Change Profile Picture</h2>
+            
+              <div class="upload-btn-wrapper">
+                <button class="btn-upload"><h3>Upload Photo</h3></button>
+                <input type="file" id="photoFile" accept="image/*" onchange="uploadPhoto(this);" />
+              </div>
+              <div class="upload-btn-wrapper">
+                <button class="btn-remove" onclick="removePhoto(this);"><h3>Remove Photo</h3></button>
+              </div>
+            </div>
+          
+        </div>
 
     </div>
 
