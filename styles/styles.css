@@ -96,6 +96,43 @@ body {
   text-align: center; 
  }
 
+ .white-card-wide input{ 
+  background-color: #f8f8f8;
+  padding: 10px; 
+  border: 1px solid #e6e6e6;
+  width: 100%; 
+  margin-bottom: 10px; 
+  box-sizing: border-box; 
+ }
+
+ .white-card-wide p { 
+  text-align: left; 
+ }
+
+ .white-card-wide th, td {
+  border-bottom: none;
+}
+
+ .info button {
+  background-color: rgb(153, 184, 241);
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 100%; 
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+ .info button:hover { 
+   background-color: rgb(106, 146, 235);
+ }
+
  .topnav {
   overflow: hidden;
   background-color: white;
@@ -262,10 +299,10 @@ div.chat-window{
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
   border: 1px solid #e6e6e6;
   width: 400px;
   border-radius: 10px; 
+  padding:0;
 }
 
 .modal-content h2{ 
@@ -273,16 +310,54 @@ div.chat-window{
   text-align: center; 
 }
 
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
-.close:hover,
-.close:focus {
-  color: rgb(75, 37, 34);
-  text-decoration: none;
+.upload-btn-wrapper:hover { 
+  cursor: pointer !important;
+}
+
+.btn-upload {
+  background-color: white;
+  padding: 8px 20px;
+  border: none; 
+  width: 400px; 
+}
+
+.btn-upload h3 { 
+  color: rgb(106, 146, 235);
+}
+
+.btn-upload:hover { 
+  cursor: pointer !important;
+}
+
+.btn-remove {
+  background-color: white;
+  padding: 8px 20px;
+  border: none; 
+  width: 400px; 
+}
+
+.btn-remove:hover{ 
   cursor: pointer;
+}
+
+.btn-remove h3 { 
+  color: rgb(75, 37, 34);
+}
+.upload-btn-wrapper input[type=file] {
+  font-size: 80px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0; 
+}
+
+.upload-btn-wrapper input[type=file]:hover {
+  cursor: pointer !important;
 }

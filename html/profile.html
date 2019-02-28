@@ -18,23 +18,48 @@
         <a href="messages.html"><i class="fas fa-comment"></i></a> 
     </div>
     <div class="white-card-wide" style="margin-top: 50px;">        
-        <img id="profile" class="display-pic" src="#" onerror="if (this.src != '../images/error.png') this.src = '../images/error.png';">
+        <img id="profile" class="display-pic" src="../images/error.png">
     
-        <div class="info"><h2>FirstName LastName</h2><br>status<hr>
-            <p>Job</p>
-            <p>Location</p>
-            <p>Birthday</p>
-            <p>Phone</p>
-            <p>Interests</p>
+        <div class="info"><h2>FirstName LastName</h2>
+            <h3 contenteditable="true" >Status</h3>
+
+            <table>
+              <tr> 
+                <td><p>Job: </p></td>
+                <td><input type="text"></td>
+              </tr>
+              <tr> 
+                <td><p>Location: </p></td>
+                <td><input type="text"></td>
+              </tr>
+              <tr> 
+                <td><p>Birthday: </p></td>
+                <td><input type="text"></td>
+              </tr>
+              <tr> 
+                <td><p>Phone: </p></td>
+                <td><input type="text"></td>
+              </tr>
+              <tr> 
+                <td><p>Interests: </p></td>
+                <td><input type="text"></td>
+              </tr>
+            </table>
+            <button>Save</button>
         </div>
 
         <div id="myModal" class="modal">
 
-            <!-- Modal content -->
             <div class="modal-content">
-              <span class="close">&times;</span>
               <h2>Change Profile Picture</h2>
-              <input type="file" label="Upload Profile Picture" name="myFile" onchange="readURL(this);"/></td>
+            
+              <div class="upload-btn-wrapper">
+                <button class="btn-upload"><h3>Upload Photo</h3></button>
+                <input type="file" id="photoFile" accept="image/*" onchange="uploadPhoto(this);" />
+              </div>
+              <div class="upload-btn-wrapper">
+                <button class="btn-remove" onclick="removePhoto(this);"><h3>Remove Photo</h3></button>
+              </div>
             </div>
           
         </div>
