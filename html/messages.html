@@ -3,6 +3,9 @@
 <head> 
     <link rel="stylesheet" type="text/css" href="../styles/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../styles/messages.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../scripts/messages.js"></script>
 </head>
 
 <body>
@@ -14,375 +17,239 @@
     <a href="search.html"><i class="fa fa-fw fa-search" title="Search for Contacts"></i></a> 
     <a class="active" href="messages.html"><i class="fas fa-comment" title="Messages"></i></a> 
 </div>
-<div class="center">
-    <div class="main-bar">
-        <h2>FirstName LastName</h2>
-    </div>
+    <div class="white-card-wide" style="margin-top: 50px;">
 
-    <div class="chat">
+        <div>
+                <div class="chat-section-header">
+                        <h3>Messenger</h3> <i class="fas fa-edit" title="New Message"></i>
+                      </div>
+                      
+                      <div class="message-section-header">
+                            <h3>Alex Yang</h3>
+                      </div>
+            
+                    <div>
 
-        <div class="message-window">
-            <div class="message-list">
-                <div class="msg">
-                    <div class="from">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="to">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="from">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="to">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="from">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="to">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="from">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="from">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="from">
-                        Sample message <br>
-                        This is a paragraph
-                    </div>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="to">
-                    Sample message <br>
-                    This is a paragraph
-                </div>
-            </div>
-            <div class="msg">
-                <div class="to">
-                    Sample message <br>
-                    This is a paragraph
-                </div>
-            </div>
-            <div class="msg">
-                <div class="to">
-                    Sample message <br>
-                    This is a paragraph
-                </div>
-            </div>
-            <div class="msg">
-                <div class="to">
-                    Sample message <br>
-                    This is a paragraph
-                </div>
-            </div>
-            <div class="msg">
-                <div class="to">
-                    Sample message <br>
-                    This is a paragraph
-                </div>
-            </div>
         </div>
-    </div>
-    <div class="chat-window">
-        <textarea placeholder="Type messsage.." name="message" required>
+        
+            
+        </div class="messages-container">
 
-        </textarea>
-    <div class="icons">
-        <i class="fas fa-video"></i>
+          <div class="chat-section">
+              <table>
+                  <tr> 
+                      <td> 
+                        <img id="profile" src="../images/profiles/kyuYang69.jpg">
+          
+                        <h4>Alex Yang</h4>
+                        <p class="timestamp">9:52PM</p>
+                        <p>Wanna go Mcdonalds? </p>
+   
+                      </td>
+                  </tr>
+                  <tr> 
+                        <td> 
+                          <img id="profile" src="../images/profiles/fong69.jpg">
+                          <h4>Andrew Fong</h4>
+                          <p class="timestamp">9:52PM</p>
+                          <p>fOOD!???? </p>
+                        </td>
+                    </tr>
+                    <tr> 
+                            <td> 
+                              <img id="profile" src="../images/profiles/kyuYang69.jpg">
+                              <h4>Alex Yang</h4>
+                              <p class="timestamp">9:52PM</p>
+                              <p>Wanna go Mcdonalds? </p>
+                            </td>
+                        </tr>
+                        <tr> 
+                              <td> 
+                                <img id="profile" src="../images/profiles/fong69.jpg">
+                                <h4>Andrew Fong</h4>
+                                <p class="timestamp">9:52PM</p>
+                                <p>fOOD!???? </p>
+                              </td>
+                          </tr>
+                          <tr> 
+                                <td> 
+                                  <img id="profile" src="../images/profiles/kyuYang69.jpg">
+                                  <h4>Alex Yang</h4>
+                                  <p class="timestamp">9:52PM</p>
+                                  <p>Wanna go Mcdonalds? </p>
+                                </td>
+                            </tr>
+                            <tr> 
+                                  <td> 
+                                    <img id="profile" src="../images/profiles/fong69.jpg">
+                                    <h4>Andrew Fong</h4>
+                                    <p class="timestamp">9:52PM</p>
+                                    <p>fOOD!???? </p>
+                                  </td>
+                              </tr>
+                              <tr> 
+                                    <td> 
+                                      <img id="profile" src="../images/profiles/kyuYang69.jpg">
+                                      <h4>Alex Yang</h4>
+                                      <p class="timestamp">9:52PM</p>
+                                      <p>Wanna go Mcdonalds? </p>
+                                    </td>
+                                </tr>
+                                <tr> 
+                                      <td> 
+                                        <img id="profile" src="../images/profiles/fong69.jpg">
+                                        <h4>Andrew Fong</h4>
+                                        <p class="timestamp">9:52PM</p>
+                                        <p>fOOD!???? </p>
+                                      </td>
+                                  </tr>
+                                  <tr> 
+                                        <td> 
+                                          <img id="profile" src="../images/profiles/kyuYang69.jpg">
+                                          <h4>Alex Yang</h4>
+                                          <p class="timestamp">9:52PM</p>
+                                          <p>Wanna go Mcdonalds? </p>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+                                          <td> 
+                                            <img id="profile" src="../images/profiles/fong69.jpg">
+                                            <h4>Andrew Fong</h4>
+                                            <p class="timestamp">9:52PM</p>
+                                            <p>fOOD!???? </p>
+                                          </td>
+                                      </tr>
 
+                                      <tr> 
+                                            <td> 
+                                              <img id="profile" src="../images/profiles/kyuYang69.jpg">
+                                              <h4>Alex Yang</h4>
+                                              <p class="timestamp">9:52PM</p>
+                                              <p>Wanna go Mcdonalds? </p>
+                                            </td>
+                                        </tr>
+                                        <tr> 
+                                              <td> 
+                                                <img id="profile" src="../images/profiles/fong69.jpg">
+                                                <h4>Andrew Fong</h4>
+                                                <p class="timestamp">9:52PM</p>
+                                                <p>fOOD!???? </p>
+                                              </td>
+                                          </tr>
 
-        <i class="fas fa-image"></i>
-        <i class="far fa-comment-dots"></i>
-        <i class="fas fa-pencil-alt"></i>
+              </table>
 
+          </div>
+              
+          <div class="message-section" id="messageSection">
+            <div class="received">
 
+                <p> <span>Hey do i look good here? </span></p>
+                <img class="received" id="profile" src="../images/profiles/kyuYang69.jpg">
 
-
-    </div>
-
-
-    </div>
-</div>
-
-
-<div class="contacts-bar">
-    <ul class="conversation-list">
-        <li class="conversation">
-            <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-            <div class="pinfo">
-                <h4>Firstname Lastname</h4>
-                <p>
-                    current chat
-                </p>
             </div>
+      
+              
+      
+                           
+        </div>
+        <div class="input-box">
+            <div id="myModal" class="modal-emoji">
+              <div id="emojiContent" class="modal-content-emoji">
+                <span>😀</span>
+                <span>😃</span>
+                <span>😄</span>
+                <span>😁</span>
+                <span>😆</span>
+                <span>😅</span>
+                <span>🤣</span>
+                <span>😊</span>
+                <span>😇</span>
+                <span>🙂</span>
+                <span>🙃</span>
+                <span>😉</span>
+                <span>😌</span>
+                <span>😍</span>
+                <span>😘</span>
+                <span>😗</span>
+                <span>😙</span>
+                <span>😚</span>
+                <span>😋</span>
+                <span>😛</span>
+                <span>😝</span>
+                <span>😜</span>
+                <span>🤨</span>
+                <span>🤪</span>
+                <span>🧐</span>
+                <span>🤓</span>
+                <span>😎</span>
+                <span>🤩</span>
+                <span>😏</span>
+                <span>😒</span>
+                <span>😞</span>
+                <span>😔</span>
+                <span>😟</span>
+                <span>😕</span>
+                <span>🙁</span>
+                <span>😣</span>
+                <span>😖</span>
+                <span>😫</span>
+                <span>😢</span>
+                <span>😭</span>
+                <span>😤</span>
+                <span>😠</span>
+                <span>😡</span>
+                <span>🤬</span>
+                <span>🤯</span>
+                <span>😳</span>
+                <span>😱</span>
+                <span>😨</span>
+                <span>😰</span>
+                <span>😥</span>
+                <span>😓</span>
+                <span>🤔</span>
+                <span>🤗</span>
+                <span>🤭</span>
+                <span>🤫</span>
+                <span>🤥</span>
+                <span>😶</span>
+                <span>😐</span>
+                <span>😑</span>
+                <span>😬</span>
+                <span>🙄</span>
+                <span>😯</span>
+                <span>😦</span>
+                <span>😧</span>
+                <span>😮</span>
+                <span>😲</span>
+                <span>😴</span>
+                <span>🤤</span>
+                <span>😪</span>
+                <span>😵</span>
+                <span>🤐</span>
+                <span>🤢</span>
+                <span>🤮</span>
+                <span>🤧</span>
+                <span>🍑</span>
+                <span>🍆</span>
 
-            <div class="timestamp">
-                <p>
-                    9:52PM
-                </p>
-            </div>
+              
+                </div>
+              </div>
+                <input id="chatInput"type="text" placeholder="Type a message...">
+                <i id="emojiButton" class="far fa-smile" title="Send Emoji"></i>
+                <i id="sendImageButton" class="far fa-image" title="Send Image"></i>
+                <input id="imageFile" type="file" accept="image/*" hidden/>
+                <i class="fas fa-camera" title="Take Picture"></i>
+                <i class="fas fa-paperclip" title="Send File"></i>
+                <i class="fas fa-map-marker-alt" title="Send Location"></i>
+        </div> 
 
-            <div class="notification">
-                <img class="notification active" src="../images/exclamation.png" alt="notification">
-            </div>
-        </li>
-
-        <li class="conversation">
-        <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-        <div class="pinfo">
-            <h4>Firstname Lastname</h4>
-            <p>
-                current chat
-            </p>
         </div>
 
-        <div class="timestamp">
-            <p>
-                9:52PM
-            </p>
-        </div>
-
-        <div class="notification">
-            <img class="notification active" src="../images/exclamation.png" alt="notification">
-        </div>
-        </li>
-        <li class="conversation">
-            <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-            <div class="pinfo">
-                <h4>Firstname Lastname</h4>
-                <p>
-                    current chat
-                </p>
-            </div>
-
-            <div class="timestamp">
-                <p>
-                    9:52PM
-                </p>
-            </div>
-
-            <div class="notification">
-                <img class="notification active" src="../images/exclamation.png" alt="notification">
-            </div>
-        </li>
-        <li class="conversation">
-<div class="white-card-wide" style="margin-top: 50px;">
-    <div class="contacts-bar">
-        <ul class="conversation-list">
-            <li class="conversation">
-                <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-                <div class="pinfo">
-                    <h4>Firstname Lastname</h4>
-                    <p>
-                        current chat
-                    </p>
-                </div>
-    
-                <div class="timestamp">
-                    <p>
-                        9:52PM
-                    </p>
-                </div>
-    
-                <div class="notification">
-                    <img class="notification active" src="../images/exclamation.png" alt="notification">
-                </div>
-            </li>
-    
-            <li class="conversation">
-            <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-            <div class="pinfo">
-                <h4>Firstname Lastname</h4>
-                <p>
-                    current chat
-                </p>
-            </div>
-    
-            <div class="timestamp">
-                <p>
-                    9:52PM
-                </p>
-            </div>
-    
-            <div class="notification">
-                <img class="notification active" src="../images/exclamation.png" alt="notification">
-            </div>
-            </li>
-            <li class="conversation">
-                <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-                <div class="pinfo">
-                    <h4>Firstname Lastname</h4>
-                    <p>
-                        current chat
-                    </p>
-                </div>
-    
-                <div class="timestamp">
-                    <p>
-                        9:52PM
-                    </p>
-                </div>
-    
-                <div class="notification">
-                    <img class="notification active" src="../images/exclamation.png" alt="notification">
-                </div>
-            </li>
-            <li class="conversation">
-                <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-                <div class="pinfo">
-                    <h4>Firstname Lastname</h4>
-                    <p>
-                        current chat
-                    </p>
-                </div>
-    
-                <div class="timestamp">
-                    <p>
-                        9:52PM
-                    </p>
-                </div>
-    
-                <div class="notification">
-                    <img class="notification active" src="../images/exclamation.png" alt="notification">
-                </div>
-            </li>
-            <li class="conversation">
-                <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-                <div class="pinfo">
-                    <h4>Firstname Lastname</h4>
-                    <p>
-                        current chat
-                    </p>
-                </div>
-    
-                <div class="timestamp">
-                    <p>
-                        9:52PM
-                    </p>
-                </div>
-    
-                <div class="notification">
-                    <img class="notification active" src="../images/exclamation.png" alt="notification">
-                </div>
-            </li>
-            <li class="conversation">
-                <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-                <div class="pinfo">
-                    <h4>Firstname Lastname</h4>
-                    <p>
-                        current chat
-                    </p>
-                </div>
-    
-                <div class="timestamp">
-                    <p>
-                        9:52PM
-                    </p>
-                </div>
-    
-                <div class="notification">
-                    <img class="notification active" src="../images/exclamation.png" alt="notification">
-                </div>
-            </li>
-            <li class="conversation">
-                <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-                <div class="pinfo">
-                    <h4>Firstname Lastname</h4>
-                    <p>
-                        current chat
-                    </p>
-                </div>
-    
-                <div class="timestamp">
-                    <p>
-                        9:52PM
-                    </p>
-                </div>
-    
-                <div class="notification">
-                    <img class="notification active" src="../images/exclamation.png" alt="notification">
-                </div>
-            </li>
-            <li class="conversation">
-                <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-                <div class="pinfo">
-                    <h4>Firstname Lastname</h4>
-                    <p>
-                        current chat
-                    </p>
-                </div>
-    
-                <div class="timestamp">
-                    <p>
-                        9:52PM
-                    </p>
-                </div>
-    
-                <div class="notification">
-                    <img class="notification active" src="../images/exclamation.png" alt="notification">
-                </div>
-            </li>
-        </ul>
-    
     </div>
-
-
-            <div class="notification">
-                <img class="notification active" src="../images/exclamation.png" alt="notification">
-            </div>
-        </li>
-        <li class="conversation">
-            <img src="../images/sample.jpg" class="profile-snap" alt="profile picture">
-            <div class="pinfo">
-                <h4>Firstname Lastname</h4>
-                <p>
-                    current chat
-                </p>
-            </div>
-
-            <div class="timestamp">
-                <p>
-                    9:52PM
-                </p>
-            </div>
-
-            <div class="notification">
-                <img class="notification non-active" src="../images/exclamation.png" alt="notification">
-            </div>
-        </li>
-
-    </ul>
 
 </div>
-
-
 
 
 </body>
