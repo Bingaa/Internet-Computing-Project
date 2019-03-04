@@ -9,6 +9,7 @@ window.onload = function(){
             var div = document.createElement("div");
             div.setAttribute("class", "sent"); 
             var message = document.createElement("p"); 
+            div.setAttribute("title", getTime()); 
             div.appendChild(message);
             var text = document.createElement("span"); 
             text.innerHTML = document.getElementById("chatInput").value; 
@@ -60,6 +61,41 @@ window.onload = function(){
         document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
     }
 
+    //function to get current Time
+    var getTime = function(){ 
+        let date, time, hour, minute, dayOrNight, day, month, Months,  year; 
+        Months = {
+            0: "January", 
+            1: "February", 
+            2: "March", 
+            3: "April", 
+            4: "May", 
+            5: "June", 
+            6: "July", 
+            7: "August", 
+            8: "September", 
+            9: "October", 
+            10: "November", 
+            11: "December"
+        };
+        date = new Date(); 
+        year = date.getFullYear(); 
+        month = Months[date.getMonth()]; 
+        day = date.getDate(); 
+        hour = date.getHours(); 
+        minute = ( '0' + date.getMinutes()).substr(-2); 
+        dayOrNight = "AM";
+        if(hour > 12){ 
+            hour = hour -12; 
+            dayOrNight = "PM"; 
+        } else if (hour == 0){ 
+            hour = 12; 
+        }
+        
+        time = month + " " + day +  ", " + year + " " + hour + ":" + minute+ " " + dayOrNight;
+        
+        return time; 
+    }
 
 
 }
