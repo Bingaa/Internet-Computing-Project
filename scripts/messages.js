@@ -1,4 +1,6 @@
 window.onload = function(){ 
+    //Make messages scroll to bottom
+    document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
 
     //Make message appear in chat 
     var input = document.getElementById("chatInput");
@@ -13,6 +15,8 @@ window.onload = function(){
             message.appendChild(text); 
             document.getElementById("messageSection").appendChild(div);
             document.getElementById("chatInput").value = "";
+            //Make messages scroll to bottom
+            document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
         }
     });
 
@@ -52,8 +56,8 @@ window.onload = function(){
         div.appendChild(img); 
         document.getElementById("messageSection").appendChild(div);
         imageFileInput.value = "";
-        
-
+        //Make messages scroll to bottom
+        document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
     }
 
 
