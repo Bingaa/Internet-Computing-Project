@@ -27,11 +27,6 @@ window.onload = function(){
     emoji.onclick = function(){ 
         modal.style.display = "block";
     }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
 
     //Click event for emoji to show up on input
     var emojiContainer = document.getElementById("emojiContent").querySelectorAll("span");
@@ -41,6 +36,22 @@ window.onload = function(){
         }   
     }
 
+    //Make new message div show up when message button clicked 
+    var newMessageButton = document.getElementById("newMessage");
+    var modalMessage = document.getElementById('myModalMessage');
+    newMessageButton.onclick = function(){ 
+        modalMessage.style.display = "block";
+    }
+
+    //Make modals disappear
+    window.onclick = function(event) {
+        if (event.target == modalMessage) {
+            modalMessage.style.display = "none";
+        }
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
     //Click event for sending a picture
     var sendImageButton = document.getElementById("sendImageButton"); 

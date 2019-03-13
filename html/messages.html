@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head> 
+    <meta charset='utf-8'>
     <link rel="stylesheet" type="text/css" href="../styles/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../styles/messages.css">
@@ -21,7 +22,14 @@
 
         <div>
                 <div class="chat-section-header">
-                        <h3>Messenger</h3> <i class="fas fa-edit" title="New Message"></i>
+                        <h3>Messenger</h3> <i id="newMessage" class="fas fa-edit" title="New Message"></i>
+                        <div id="myModalMessage" class="modal-message">
+                          <div class="modal-content-message">
+
+                              <h2>hello</h2>
+                          </div>
+                          
+                        </div>
                       </div>
                       
                       <div class="message-section-header">
@@ -156,84 +164,82 @@
         <div class="input-box">
             <div id="myModal" class="modal-emoji">
               <div id="emojiContent" class="modal-content-emoji">
-                <span>😀</span>
-                <span>😃</span>
-                <span>😄</span>
-                <span>😁</span>
-                <span>😆</span>
-                <span>😅</span>
-                <span>🤣</span>
-                <span>😊</span>
-                <span>😇</span>
-                <span>🙂</span>
-                <span>🙃</span>
-                <span>😉</span>
-                <span>😌</span>
-                <span>😍</span>
-                <span>😘</span>
-                <span>😗</span>
-                <span>😙</span>
-                <span>😚</span>
-                <span>😋</span>
-                <span>😛</span>
-                <span>😝</span>
-                <span>😜</span>
-                <span>🤨</span>
-                <span>🤪</span>
-                <span>🧐</span>
-                <span>🤓</span>
-                <span>😎</span>
-                <span>🤩</span>
-                <span>😏</span>
-                <span>😒</span>
-                <span>😞</span>
-                <span>😔</span>
-                <span>😟</span>
-                <span>😕</span>
-                <span>🙁</span>
-                <span>😣</span>
-                <span>😖</span>
-                <span>😫</span>
-                <span>😢</span>
-                <span>😭</span>
-                <span>😤</span>
-                <span>😠</span>
-                <span>😡</span>
-                <span>🤬</span>
-                <span>🤯</span>
-                <span>😳</span>
-                <span>😱</span>
-                <span>😨</span>
-                <span>😰</span>
-                <span>😥</span>
-                <span>😓</span>
-                <span>🤔</span>
-                <span>🤗</span>
-                <span>🤭</span>
-                <span>🤫</span>
-                <span>🤥</span>
-                <span>😶</span>
-                <span>😐</span>
-                <span>😑</span>
-                <span>😬</span>
-                <span>🙄</span>
-                <span>😯</span>
-                <span>😦</span>
-                <span>😧</span>
-                <span>😮</span>
-                <span>😲</span>
-                <span>😴</span>
-                <span>🤤</span>
-                <span>😪</span>
-                <span>😵</span>
-                <span>🤐</span>
-                <span>🤢</span>
-                <span>🤮</span>
-                <span>🤧</span>
-                <span>🍑</span>
-                <span>🍆</span>
-
-              
+                  <span>😀</span>
+                  <span>😃</span>
+                  <span>😄</span>
+                  <span>😁</span>
+                  <span>😆</span>
+                  <span>😅</span>
+                  <span>🤣</span>
+                  <span>😊</span>
+                  <span>😇</span>
+                  <span>🙂</span>
+                  <span>🙃</span>
+                  <span>😉</span>
+                  <span>😌</span>
+                  <span>😍</span>
+                  <span>😘</span>
+                  <span>😗</span>
+                  <span>😙</span>
+                  <span>😚</span>
+                  <span>😋</span>
+                  <span>😛</span>
+                  <span>😝</span>
+                  <span>😜</span>
+                  <span>🤨</span>
+                  <span>🤪</span>
+                  <span>🧐</span>
+                  <span>🤓</span>
+                  <span>😎</span>
+                  <span>🤩</span>
+                  <span>😏</span>
+                  <span>😒</span>
+                  <span>😞</span>
+                  <span>😔</span>
+                  <span>😟</span>
+                  <span>😕</span>
+                  <span>🙁</span>
+                  <span>😣</span>
+                  <span>😖</span>
+                  <span>😫</span>
+                  <span>😢</span>
+                  <span>😭</span>
+                  <span>😤</span>
+                  <span>😠</span>
+                  <span>😡</span>
+                  <span>🤬</span>
+                  <span>🤯</span>
+                  <span>😳</span>
+                  <span>😱</span>
+                  <span>😨</span>
+                  <span>😰</span>
+                  <span>😥</span>
+                  <span>😓</span>
+                  <span>🤔</span>
+                  <span>🤗</span>
+                  <span>🤭</span>
+                  <span>🤫</span>
+                  <span>🤥</span>
+                  <span>😶</span>
+                  <span>😐</span>
+                  <span>😑</span>
+                  <span>😬</span>
+                  <span>🙄</span>
+                  <span>😯</span>
+                  <span>😦</span>
+                  <span>😧</span>
+                  <span>😮</span>
+                  <span>😲</span>
+                  <span>😴</span>
+                  <span>🤤</span>
+                  <span>😪</span>
+                  <span>😵</span>
+                  <span>🤐</span>
+                  <span>🤢</span>
+                  <span>🤮</span>
+                  <span>🤧</span>
+                  <span>🍑</span>
+                  <span>🍆</span>
                 </div>
               </div>
                 <input id="chatInput"type="text" placeholder="Type a message...">
