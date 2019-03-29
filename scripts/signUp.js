@@ -1,1 +1,3 @@
-
+$("signUpForm").submit(function(){ 
+    
+})
