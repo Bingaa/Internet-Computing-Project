@@ -194,6 +194,31 @@
     overflow-y: scroll;
     font-size: 25px; 
   }
+
+  .modal-message {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 220px; /* Location of the box */
+    padding-left: 120px; 
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0); /* Black w/ opacity */
+  }
+  
+  .modal-content-message {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px; 
+    width: 400px; 
+    height: 400px;
+    overflow-y: scroll;
+    font-size: 25px; 
+  }
   
   .modal-content-emoji span:hover{
     cursor: pointer;
