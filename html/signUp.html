@@ -3,6 +3,8 @@
 <head> 
     <meta charset='utf-8'>
     <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/signUp.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="../scripts/signUp.js"></script>
 </head>
@@ -10,13 +12,19 @@
 <body> 
 <div class="white-card" style="margin-top: 100px;">
     <img src= "../images/Logo.PNG">
-    <form id="signUpForm" action="profile.html"> 
-        <input type="text" name="email" placeholder="Email">
-        <input type="text" name="userName" placeholder="Username">
-        <input type="text" name="firstName" placeholder="Firstname">
-        <input type="text" name="lastName" placeholder="Lastname">
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="password2" placeholder="Repeat Password">
+    <form id="signUpForm" action="#" method="post" class="sign-up">
+        <i id="check-email" class="fas fa-check"></i> 
+        <input type="text" id="email" placeholder="Email">
+        <i id="check-username" class="fas fa-check"></i>
+        <input type="text" id="userName" placeholder="Username">
+        <i id="check-firstname" class="fas fa-check"></i>
+        <input type="text" id="firstName" placeholder="Firstname">
+        <i id="check-lastname" class="fas fa-check"></i>
+        <input type="text" id="lastName" placeholder="Lastname">
+        <i id="check-password" class="fas fa-check"></i>
+        <input type="password" id="password" placeholder="Password (At Least 8 Characters)">
+        <i id="check-password2" class="fas fa-check"></i>
+        <input type="password" id="password2" placeholder="Repeat Password">
         <a href = ></a>
         <button type="submit" value="signUp" id = "signUp">Sign Up</button>
     </form>
