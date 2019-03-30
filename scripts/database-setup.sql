@@ -10,8 +10,8 @@ DROP TABLE IF EXISTS `User`;
 
 CREATE TABLE `User` (
   `UserID` INTEGER NOT NULL AUTO_INCREMENT, 
-  'Username' VARCHAR(50) NOT NULL UNIQUE, 
-  'Password' VARCHAR(50) NOT NULL, 
+  `UserName` VARCHAR(50) NOT NULL, 
+  `Password` VARCHAR(50) NOT NULL,
   `FirstName` VARCHAR(50) NOT NULL, 
   `LastName` VARCHAR(50) NOT NULL, 
   `Job` VARCHAR(50), 
@@ -19,7 +19,9 @@ CREATE TABLE `User` (
   `Email` VARCHAR(50) NOT NULL,  
   `Birthday` DATETIME, 
   `Interests` LONGTEXT, 
-  PRIMARY KEY (`UserID`)
+  PRIMARY KEY (`UserID`), 
+  UNIQUE(`UserName`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 
-
+INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`)
+VALUES ('andrew69', 'andrew69', 'Andrew', 'Fong', 'fong7680@mylaurier.ca')
