@@ -8,7 +8,13 @@ session_start();
 // Create connection
 
 $connection = getDB(DBHOST, DBUSER, DBPASS, DBNAME);
-$id = $_SESSION["id"] ; 
+$id = $_SESSION["id"] ;
+if(isset($_GET["profileId"])){
+  if ($_SESSION["id"]!=$_GET["profileId"]){
+    $id = $_GET["profileId"] ; 
+  }
+}
+
 $query = "SELECT * FROM user WHERE user.UserID = $id";
 $result = runQuery($connection, $query); 
 $row = mysqli_fetch_array($result);
