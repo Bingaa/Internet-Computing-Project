@@ -1,3 +1,8 @@
+<?php
+include_once('include/config.php');
+include 'include/functions.php';
+$connection = getDB(DBHOST, DBUSER, DBPASS, DBNAME); 
+?>
 <!DOCTYPE html>
 
 <head> 
@@ -15,6 +20,22 @@
             <input type="password" name="password" placeholder="Password">
             <button type="submit" value="Login">Login</button>
         </form>
+        <?php 
+        if(isset($_POST["userName"]) && isset($_POST["password"])){ 
+            $userName = $_POST["userName"]; 
+            $password = $_POST["password"]; 
+            $query = "SELECT UserID FROM User WHERE UserName = '" .$userName ."' AND Password ='" .$password ."'"; 
+            $results = runQuery($connection, $query);  
+            $id = mysqli_fetch_assoc($results)["UserID"];   
+            if(empty($id)){ 
+                echo "<p> Invalid UserName or Password</p>";
+            } else { 
+                session_start(); 
+                $_SESSION["id"] = $id; 
+                header("Location: html/messages.html");
+            }
+        }
+        ?>
         <p><a href="html/forgotPassword.html">Forgot Password?</a></p>
     </div>
 
