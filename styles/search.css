@@ -1,0 +1,11 @@
+.contact-list{ 
+    border-collapse: collapse;
+}
+.contact-list tr:hover{ 
+    background-color: rgb(231, 231, 231);
+
+}
+
+.contact-list tr{ 
+    padding-bottom: 5px; 
+}

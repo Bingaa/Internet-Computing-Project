@@ -3,6 +3,7 @@
 <head> 
     <meta charset='utf-8'>
     <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/search.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="../scripts/search.js"></script>  
@@ -22,8 +23,9 @@
         <p>Find your friends and family that you wish to get in contact with!</p>
         <input type="text" id="search" placeholder="Search" onKeyUp="searchContacts(this.value);">
 
-        <table style="width:100%" id="foundContacts">
-        </table>
+        <div id="contactList"> 
+
+        </div>
 
     </div>
 
