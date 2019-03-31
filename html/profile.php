@@ -9,9 +9,11 @@ session_start();
 
 $connection = getDB(DBHOST, DBUSER, DBPASS, DBNAME);
 $id = $_SESSION["id"] ;
+$editable = true;
 if(isset($_GET["profileId"])){
   if ($_SESSION["id"]!=$_GET["profileId"]){
-    $id = $_GET["profileId"] ; 
+    $id = $_GET["profileId"] ;
+    $editable = false;
   }
 }
 
@@ -50,22 +52,22 @@ $row = mysqli_fetch_array($result);
             <table>
               <tr> 
                 <td><p>Job: </p></td>
-                <td><input type="text" value=<?php echo $row["Job"]?>></td>
+                <td><input type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> value=<?php if($editable){echo $row["Job"];}?>><?php if(!$editable){echo $row["Job"];}?></td>
               </tr>
               <tr> 
                 <td><p>Location: </p></td>
-                <td><input type="text" value=<?php echo $row["Location"]?>></td>
+                <td><input type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> value=<?php if($editable){echo $row["Location"];}?>><?php if(!$editable){echo $row["Location"];}?></td>
               </tr>
               <tr> 
                 <td><p>Birthday: </p></td>
-                <td><input type="text" value=<?php echo $row["Birthday"]?>></td>
+                <td><input type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> value=<?php if($editable){echo $row["Birthday"];}?>><?php if(!$editable){echo $row["Birthday"];}?></td>
               </tr>
               <tr> 
                 <td><p>Interests: </p></td>
-                <td><input type="text" value=<?php echo $row["Interests"]?>></td>
+                <td><input type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> value=<?php if($editable){echo $row["Interests"];}?>><?php if(!$editable){echo $row["Interests"];}?></td>
               </tr>
             </table>
-            <button>Save</button>
+            <button><?php if(!$editable){echo "Add Contact";}else{echo "Save";}  ?></button>
         </div>
 
         <div id="myModal" class="modal">
