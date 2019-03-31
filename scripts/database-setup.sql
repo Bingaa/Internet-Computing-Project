@@ -41,8 +41,13 @@ DROP TABLE IF EXISTS `Contacts`;
 CREATE TABLE `Contacts` (
   `UserID` INTEGER NOT NULL, 
   `ContactID` INTEGER NOT NULL, 
-  PRIMARY KEY (`UserID`)
+  PRIMARY KEY (`UserID`,`ContactID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
+
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (1, 2);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (1, 3);
 
 #
 # Table structure for table 'Contacts'
