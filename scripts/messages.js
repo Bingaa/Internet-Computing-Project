@@ -2,7 +2,6 @@ window.onload = function(){
 
     let contactsCurrentGroup = []; 
     $("#searchContacts").keyup(function(){ 
-
         $.get("../searchContacts.php?searchString=" + $(this).val(), function(response){ 
             let contacts = JSON.parse(response); 
             console.log(contacts);
@@ -50,6 +49,10 @@ window.onload = function(){
     
         });
     
+    });
+
+    $("#createMessageButton").click(function(){ 
+        $("#myModalMessage").css("display", "none");
     });
 
     //Make messages scroll to bottom
