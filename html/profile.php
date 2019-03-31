@@ -1,4 +1,19 @@
+<?php
+require_once '../include/config.php';
+include '../include/functions.php';
+session_start();
 
+
+//your code for connecting to database, etc. goese here
+// Create connection
+
+$connection = getDB(DBHOST, DBUSER, DBPASS, DBNAME);
+$id = $_SESSION["id"] ; 
+$query = "SELECT * FROM user WHERE user.UserID = $id";
+$result = runQuery($connection, $query); 
+$row = mysqli_fetch_array($result);
+
+?>
 
 <!DOCTYPE html>
 
@@ -22,29 +37,26 @@
     <div class="white-card-wide" style="margin-top: 50px;">        
         <img id="profile" class="display-pic" src="../images/error.png">
     
-        <div class="info"><h2>FirstName LastName</h2>
+        <div class="info">
+        <?php echo "<h2>".$row["FirstName"]." ".$row["LastName"]."</h2>"?>
             <h3 contenteditable="true" >Status</h3>
 
             <table>
               <tr> 
                 <td><p>Job: </p></td>
-                <td><input type="text"></td>
+                <td><input type="text" value=<?php echo $row["Job"]?>></td>
               </tr>
               <tr> 
                 <td><p>Location: </p></td>
-                <td><input type="text"></td>
+                <td><input type="text" value=<?php echo $row["Location"]?>></td>
               </tr>
               <tr> 
                 <td><p>Birthday: </p></td>
-                <td><input type="text"></td>
-              </tr>
-              <tr> 
-                <td><p>Phone: </p></td>
-                <td><input type="text"></td>
+                <td><input type="text" value=<?php echo $row["Birthday"]?>></td>
               </tr>
               <tr> 
                 <td><p>Interests: </p></td>
-                <td><input type="text"></td>
+                <td><input type="text" value=<?php echo $row["Interests"]?>></td>
               </tr>
             </table>
             <button>Save</button>
