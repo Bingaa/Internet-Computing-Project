@@ -2,13 +2,16 @@
 include_once('include/config.php');
 include 'include/functions.php';
 $connection = getDB(DBHOST, DBUSER, DBPASS, DBNAME); 
+session_start();
+if(isset($_SESSION["id"])){ 
+    header("Location: html/messages.php");
+}
 ?>
 <!DOCTYPE html>
 
 <head> 
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 </head>
 
 <body> 
@@ -29,9 +32,8 @@ $connection = getDB(DBHOST, DBUSER, DBPASS, DBNAME);
             if(empty($id)){ 
                 echo "<p> Invalid UserName or Password</p>";
             } else { 
-                session_start(); 
                 $_SESSION["id"] = $id; 
-                header("Location: html/messages.html");
+                header("Location: html/messages.php");
             }
         }
         ?>

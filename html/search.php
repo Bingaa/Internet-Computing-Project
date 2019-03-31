@@ -11,10 +11,10 @@
 <body> 
     <div class="topnav">
         <img src="../images/LogoHorizontal.PNG" style="float:left; width:150px; height:60px; ">
-        <a href="../index.php"><i class="fas fa-sign-out-alt" title="Sign Out"></i></a>
+        <a href="../logOut.php"><i class="fas fa-sign-out-alt" title="Sign Out"></i></a>
         <a href="profile.php"><i class="fa fa-fw fa-user" title="Profile"></i></a>
-        <a class="active" href="search.html"><i class="fa fa-fw fa-search" title="Search for Contacts"></i></a> 
-        <a href="messages.html"><i class="fas fa-comment" title="Messages"></i></a> 
+        <a class="active" href="search.php"><i class="fa fa-fw fa-search" title="Search for Contacts"></i></a> 
+        <a href="messages.php"><i class="fas fa-comment" title="Messages"></i></a> 
     </div>
     <div class="white-card" style="margin-top: 50px;">
         
