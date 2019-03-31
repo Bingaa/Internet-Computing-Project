@@ -1,9 +1,5 @@
 
 var searchContacts = function(searchString){ 
-    var dummyContacts = []; 
-    dummyContacts[0] = {name: "Alex Yang", userName: "kyuYang69", status: "having fun!"}; 
-    dummyContacts[1] = {name: "Andrew Fong", userName: "fong69", status: "having fun!"}; 
-    dummyContacts[2] = {name: "Davis Feeder", userName: "davis69", status: "Running it down botlane!"}; 
 
     $.get("../findContacts.php?searchString=" + searchString, function(response){ 
         let contacts = JSON.parse(response); 
@@ -15,12 +11,17 @@ var searchContacts = function(searchString){
         let table = document.getElementById("foundContacts");
         for(let i = 0; i < contacts.length; i++){ 
             var row = table.insertRow(-1); 
+            row.setAttribute('class', 'contactRow');
+            row.setAttribute('id', contacts[i].UserID);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-            cell1.innerHTML = "<img class = 'profile-pic-icon' src = " + "../images/profiles/" + contacts[i].Image + ".jpg onerror=" + "this.src='../images/error.png'"+  ">";
+            cell1.innerHTML = "<img class = 'profile-pic-icon' src = " + "../images/" + contacts[i].Image + " onerror=" + "this.src='../images/error.png'"+  ">";
             cell2.innerHTML = "<h3>" + contacts[i].FirstName + " " + contacts[i].LastName + "</h3> <p>" + contacts[i].Status + "</p>" ;
-              
         }
+
+        $(".contactRow").click(function(){ 
+            window.location = "profile.php?profileId=" + $(this).attr('id');
+        });
 
     });
 
