@@ -21,7 +21,7 @@ function runQuery($db, $query) {
 	$result = mysqli_query($db, $query); 
 
 	if(!$result){ 
-		echo "Failed to execute query";
+		return false; 
 	}
 
 	return $result; 

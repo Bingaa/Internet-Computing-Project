@@ -12,7 +12,17 @@ $(document).ready(function () {
             $('#check-password').css('display') == 'block' &&
             $('#check-password2').css('display') == 'block'
         ){ 
-            console.log("ass");
+            $.get("../newUserSignUp.php", {
+                userName: $("#userName").val(), 
+                password: $('#password').val(), 
+                email: $('#email').val(), 
+                firstName: $('#firstName').val(), 
+                lastName: $('#lastName').val()
+            }, function(response){ 
+                if(response){ 
+                    window.location.href = "../html/profile.php";
+                } 
+            });
         }
     })
 
