@@ -1,0 +1,4 @@
+put sendmail.ini and php.ini in the xampp folders
+E:\xampp\sendmail << sendmail.ini
+E:\xampp\php  << php.ini
+change E to C in php.ini if using different drive
