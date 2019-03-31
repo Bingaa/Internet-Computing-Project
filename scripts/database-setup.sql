@@ -25,8 +25,7 @@ CREATE TABLE `User` (
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 
 INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`)
-VALUES ('andrew69', 'andrew69', 'Andrew', 'Fong', 'fong7680@mylaurier.ca')
-
+VALUES ('andrew69', 'andrew69', 'Andrew', 'Fong', 'fong7680@mylaurier.ca');
 
 #
 # Table structure for table 'User'
@@ -36,7 +35,7 @@ DROP TABLE IF EXISTS `UserGroup`;
 
 CREATE TABLE `UserGroup` (
   `GroupID` INTEGER NOT NULL AUTO_INCREMENT,
-  'Usernames' VARCHAR(50) NOT NULL UNIQUE, 
+  `Usernames` VARCHAR(50) NOT NULL, 
   `JoinDate` DATETIME, 
   PRIMARY KEY (`GroupID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
@@ -51,11 +50,11 @@ DROP TABLE IF EXISTS `Message`;
 
 CREATE TABLE `Message` (
   `MessageID` INTEGER NOT NULL AUTO_INCREMENT, 
-  'Type' VARCHAR(50) NOT NULL, 
-  'Content' LONGTEXT NOT NULL, 
+  `Type` VARCHAR(50) NOT NULL, 
+  `Content` LONGTEXT NOT NULL, 
   `CreateDate` DATETIME,  
-  `SenderID` INTEGER NOT NULL AUTO_INCREMENT,
-  `ReceiverID` INTEGER NOT NULL AUTO_INCREMENT, 
+  `SenderID` INTEGER NOT NULL,
+  `ReceiverID` INTEGER NOT NULL, 
   PRIMARY KEY (`MessageID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 
