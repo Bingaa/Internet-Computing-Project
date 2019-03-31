@@ -11,8 +11,8 @@
 
 <body>
   <?php 
-  session_start(); 
-  echo $_SESSION["id"];?>
+    session_start(); 
+  ?>
 
 <div class="topnav">
     <img src="../images/LogoHorizontal.PNG" style="float:left; width:150px; height:60px; ">
@@ -28,8 +28,15 @@
                         <h3>Messenger</h3> <i id="newMessage" class="fas fa-edit" title="New Message"></i>
                         <div id="myModalMessage" class="modal-message">
                           <div class="modal-content-message">
+                              
+                              <input type="text" id="searchContacts" placeholder="Search Contacts">
+                              <ul id="to"> </ul>
+                              <p> </p>
+                              <div id="contactList"> 
 
-                              <h2>hello</h2>
+                              </div>
+
+                              <button id="createMessageButton">Create Message</button>
                           </div>
                           
                         </div>

@@ -1,4 +1,57 @@
 window.onload = function(){ 
+
+    let contactsCurrentGroup = []; 
+    $("#searchContacts").keyup(function(){ 
+
+        $.get("../searchContacts.php?searchString=" + $(this).val(), function(response){ 
+            let contacts = JSON.parse(response); 
+            console.log(contacts);
+    
+            $('#contactList').empty('#foundContacts'); 
+            $('#contactList').append('<table style="width:100%" id="foundContacts" class="contact-list"></table>');
+    
+            let table = document.getElementById("foundContacts");
+            for(let i = 0; i < contacts.length; i++){ 
+                var row = table.insertRow(-1); 
+                row.setAttribute('class', 'contactRow');
+                row.setAttribute('id', i);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = "<img class = 'profile-pic-icon' src = " + "../images/" + contacts[i].Image + " onerror=" + "this.src='../images/error.png'"+  ">";
+                cell2.innerHTML = "<p>" + contacts[i].FirstName + " " + contacts[i].LastName + "</p>" ;
+            }
+    
+            $(".contactRow").click(function(){ 
+                if(!contactsCurrentGroup.includes(contacts[$(this).attr("id")].ContactID)){ 
+                    $("#to").append("<li >" + contacts[$(this).attr("id")].FirstName + " " + contacts[$(this).attr("id")].LastName + "<span id='" + contacts[$(this).attr("id")].ContactID + "' " + "class='close'>x</span></li>"); 
+                    contactsCurrentGroup.push(contacts[$(this).attr("id")].ContactID);
+                }
+           
+                /* Get all elements with class="close" */
+                var closebtns = document.getElementsByClassName("close");
+                var i;
+
+                /* Loop through the elements, and hide the parent, when clicked on */
+                for (i = 0; i < closebtns.length; i++) {
+                    closebtns[i].addEventListener("click", function() {
+                        this.parentElement.style.display = 'none';
+                        let index = contactsCurrentGroup.indexOf(this.id);
+                        contactsCurrentGroup.splice(index,1);
+                    });
+                }
+
+                if(contactsCurrentGroup.length > 0){ 
+                    $("#createMessageButton").css("display", "block");
+                } else { 
+                    $("#createMessageButton").css("display", "none");
+                }
+
+            });
+    
+        });
+    
+    });
+
     //Make messages scroll to bottom
     document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
 
@@ -107,7 +160,6 @@ window.onload = function(){
         
         return time; 
     }
-
 
 }
 
