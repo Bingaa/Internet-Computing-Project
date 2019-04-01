@@ -105,13 +105,19 @@
 }
 
 .message-section .received p { 
-    text-align: left; 
+    text-align: left;
 
 }
 
+.message-section .received .sendername { 
+    margin: 0px; 
+    font-size: 9px;
+}
+
+
 .message-section .received p span{ 
     text-align: left; 
-    border-radius: 15px; 
+    border-radius: 10px; 
     background-color: #e6e6e6; 
     padding:5px; 
     padding-right:7px; 
@@ -134,8 +140,12 @@
 .message-section .sent p { 
     text-align: right; 
 }
+.message-section .sent .sendername { 
+    margin: 0px; 
+    font-size: 9px;
+}
 .message-section .sent p span{  
-    border-radius: 15px; 
+    border-radius: 10px; 
     background-color: rgb(125, 166, 253);
     color: white; 
     padding:5px; 

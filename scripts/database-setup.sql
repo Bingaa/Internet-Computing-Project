@@ -115,13 +115,16 @@ CREATE TABLE `Message` (
   `CreateDate` DATETIME,  
   `GroupID` INTEGER NOT NULL,
   `UserID` INTEGER NOT NULL, 
+  `SenderName` VARCHAR(50) NOT NULL,  
   PRIMARY KEY (`MessageID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 
-INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`)
-VALUES ("first sikh message", '1000-01-01 01:23:00', 1, 1);
-INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`)
-VALUES ("second sikh message", '2000-01-01 02:45:00', 2, 3);
+INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`, `SenderName` )
+VALUES ("first sikh message", '1000-01-01 01:23:00', 1, 1, 'Andrew Fong' );
+INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`, `SenderName` )
+VALUES ("first sikh message", '1000-01-01 01:23:00', 1, 2, 'Andrea Fong' );
+INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`, `SenderName` )
+VALUES ("second sikh message", '2000-01-01 02:45:00', 2, 3, 'Alex yang');
 
 
 

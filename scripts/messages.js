@@ -192,7 +192,23 @@ $(document).ready(function(){ //AJAX messages requesting
         //Select Element by ID
         //Parse JSON and insert into chat-based on whether is received or sent
         $('#messageSection').empty();
-        $("#messageSection").append("<div class='received'><p> <span>" + result[0][0] +"</span></p></div>");
+        let currentSender = result[0][2]; 
+        let div; 
+        for(let i = 0; i < result.length; i++){
+            //change class based on sender
+            if(result[i][4] != result[i][2]){ 
+                div = $("<div class='received'> </div>");
+            } else { 
+                div = $("<div class='sent'> </div>");
+            }
+            //add small text indicating who sender of message is if previously it was someone else
+            if(currentSender != result[i][2] || i == 0){ 
+                div.append("<p class='sendername'>" + result[i][3] + "</p>");
+            }
+            div.append("<p> <span>" + result[i][0] +"</span></p>");
+            $("#messageSection").append(div);
+            
+        }
       });
       request.fail(function(jqXHR,textStatus){
         //
