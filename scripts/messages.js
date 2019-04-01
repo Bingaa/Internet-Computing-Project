@@ -167,3 +167,23 @@ window.onload = function(){
 }
 
 
+
+$(document).ready(function(){ //AJAX messages requesting
+    $(".chatSel").click(function(event){
+        alert("hi");
+      var request = $.ajax({
+        type:"GET",
+        url: "../scripts/messageRequest.php",
+        data:{input:event.target.id},
+        dataType:'JSON',
+      });
+      request.done(function(result){
+        //Select Element by ID
+        //Parse JSON and insert into chat-based on whether is received or sent
+      });
+      request.fail(function(jqXHR,textStatus){
+        //
+        alert("Messages could not be found");
+      });
+    });
+});
