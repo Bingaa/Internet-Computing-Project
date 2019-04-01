@@ -11,7 +11,10 @@
 
 <body>
   <?php 
+  include '../include/config.php';
+  include '../include/functions.php';
     session_start(); 
+    $chattime = getDB();
     //$currentUser needs to be set here
   ?>
 
@@ -59,33 +62,32 @@
             //Query UserGroup for Groups associated with UserID
             $currentUser = 1; //REMOVE after
             $groupQuery = "SELECT * FROM UserGroup WHERE UserID=".$currentUser;
-
-            
-            
-            //h4 will have group name
-            //img will be user image
-            //Query Messages with GroupID to find latest message and timestamp
-
-
-
-            // Create a while loop that will populate this bar with messages
-
+            mysqli_set_charset($chattime,'utf8');
+            $groupInfo = runQuery($chattime, $groupQuery);
+            while ($row = mysqli_fetch_assoc($groupInfo)){//While loop-all groups that user is associated with
+              $groupDetailsQuery = "SELECT * FROM `group` WHERE GroupID=".$row['GroupID']." LIMIT 1";
+              $groupDetails = runQuery($chattime, $groupDetailsQuery);
+              $row2 = mysqli_fetch_assoc($groupDetails);//get group details from Group Table, there should only be 1 because GroupID is unique
+              $latestmessageQuery = "SELECT * FROM `Message` WHERE GroupID=".$row['GroupID']." ORDER BY CreateDate DESC LIMIT 1" ; //get latest message in coversation
+              $latestmessage= runQuery($chattime,$latestmessageQuery);
+              $row3 = mysqli_fetch_assoc($latestmessage);
 
             ?>
               <table>
                   <tr> 
                       <td> 
-                        <img id="profile" src="../images/profiles/kyuYang69.jpg">
-          
-                        <h4>Alex Yang</h4> 
-                        <p class="timestamp">9:52PM</p>
-                        <p>Wanna go Mcdonalds? </p>
+                        <img id="profile" src=<?php echo "\"".$row2['GroupImage']."\""  ?>>
+                        <h4><?php echo $row2['Groupname']?></h4> 
+                        <p class="timestamp"> <?php echo substr($row3['CreateDate'],11,5)  ?></p>
+                        <p><?php echo $row3['Content']?></p>
    
                       </td>
                   </tr>
               </table>
             <?php
+                
 
+            }
 
             ?>
 
@@ -93,7 +95,7 @@
               
           <div class="message-section" id="messageSection">
             <div class="received">
-
+                
                 <p> <span>Hey do i look good here? </span></p>
                 <img class="received" id="profile" src="../images/profiles/kyuYang69.jpg">
 

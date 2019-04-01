@@ -67,14 +67,14 @@ SET autocommit=1;
 
 
 
-INSERT INTO `Group` (`Groupname`)
-VALUES ('Group1');
+INSERT INTO `Group` (`Groupname`,`GroupImage`)
+VALUES ('Group1','../images/profiles/kyuYang69.jpg');
 
-INSERT INTO `Group` (`Groupname`)
-VALUES ('Group2');
+INSERT INTO `Group` (`Groupname`,`GroupImage`)
+VALUES ('Group2','../images/profiles/kyuYang69.jpg');
 
-INSERT INTO `Group` (`Groupname`)
-VALUES ('Group3');
+INSERT INTO `Group` (`Groupname`,`GroupImage`)
+VALUES ('Group3','../images/profiles/kyuYang69.jpg');
 
 
 #
@@ -94,9 +94,9 @@ CREATE TABLE UserGroup (
 SET autocommit=1;
 
 INSERT INTO `UserGroup`(`UserID`, `GroupID`)
-VALUES (1, 2);
+VALUES (1, 1);
 INSERT INTO `UserGroup`(`UserID`, `GroupID`)
-VALUES (2, 2);
+VALUES (2, 1);
 INSERT INTO `UserGroup`(`UserID`, `GroupID`)
 VALUES (1, 2);
 INSERT INTO `UserGroup`(`UserID`, `GroupID`)
@@ -116,5 +116,13 @@ CREATE TABLE `Message` (
   `UserID` INTEGER NOT NULL, 
   PRIMARY KEY (`MessageID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
+
+INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`)
+VALUES ("first sikh message", '1000-01-01 01:23:00', 1, 1);
+INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`)
+VALUES ("second sikh message", '2000-01-01 02:45:00', 2, 3);
+
+
+
 
 SET autocommit=1;
