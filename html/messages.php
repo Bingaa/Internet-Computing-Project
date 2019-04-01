@@ -12,6 +12,7 @@
 <body>
   <?php 
     session_start(); 
+    //$currentUser needs to be set here
   ?>
 
 <div class="topnav">
@@ -55,14 +56,21 @@
 
           <div class="chat-section">
             <?php
-            //Query Database for Groups associated with UserID
+            //Query UserGroup for Groups associated with UserID
+            $currentUser = 1; //REMOVE after
+            $groupQuery = "SELECT * FROM UserGroup WHERE UserID=".$currentUser;
+
+            
+            
             //h4 will have group name
             //img will be user image
-            //
+            //Query Messages with GroupID to find latest message and timestamp
 
 
 
             // Create a while loop that will populate this bar with messages
+
+
             ?>
               <table>
                   <tr> 

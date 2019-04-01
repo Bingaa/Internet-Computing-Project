@@ -65,6 +65,18 @@ CREATE TABLE `Group` (
 
 SET autocommit=1;
 
+
+
+INSERT INTO `Group` (`Groupname`)
+VALUES ('Group1');
+
+INSERT INTO `Group` (`Groupname`)
+VALUES ('Group2');
+
+INSERT INTO `Group` (`Groupname`)
+VALUES ('Group3');
+
+
 #
 # Table structure for table 'UserGroup'
 #
@@ -81,6 +93,14 @@ CREATE TABLE UserGroup (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 SET autocommit=1;
 
+INSERT INTO `UserGroup`(`UserID`, `GroupID`)
+VALUES (1, 2);
+INSERT INTO `UserGroup`(`UserID`, `GroupID`)
+VALUES (2, 2);
+INSERT INTO `UserGroup`(`UserID`, `GroupID`)
+VALUES (1, 2);
+INSERT INTO `UserGroup`(`UserID`, `GroupID`)
+VALUES (3, 2);
 #
 # Table structure for table 'User'
 #
