@@ -138,6 +138,10 @@ window.onload = function(){
         imageFileInput.value = "";
         //Make messages scroll to bottom
         document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
+
+        var requestObj = { 
+
+        }
     }
 
     //function to get current Time
@@ -176,12 +180,16 @@ window.onload = function(){
         return time; 
     }
 
+     
+
 }
 
 
 
 $(document).ready(function(){ //AJAX messages requesting
     $(".chatSel").click(function(event){
+        $(".message-section-header").empty(); 
+        $(".message-section-header").append("<h3>" + $(this).find("#name").text() + "</h3>" );
       var request = $.ajax({
         type:"GET",
         url: "../scripts/messageRequest.php",
@@ -189,6 +197,41 @@ $(document).ready(function(){ //AJAX messages requesting
         dataType:'JSON',
       });
       request.done(function(result){
+        //function to get current Time
+        var getTime = function(dateString){ 
+            let date, time, hour, minute, dayOrNight, day, month, Months,  year; 
+            Months = {
+                0: "January", 
+                1: "February", 
+                2: "March", 
+                3: "April", 
+                4: "May", 
+                5: "June", 
+                6: "July", 
+                7: "August", 
+                8: "September", 
+                9: "October", 
+                10: "November", 
+                11: "December"
+            };
+            date = new Date(parseInt(dateString)); 
+            year = date.getFullYear(); 
+            month = Months[date.getMonth()]; 
+            day = date.getDate(); 
+            hour = date.getHours(); 
+            minute = ( '0' + date.getMinutes()).substr(-2); 
+            dayOrNight = "AM";
+            if(hour > 12){ 
+                hour = hour -12; 
+                dayOrNight = "PM"; 
+            } else if (hour == 0){ 
+                hour = 12; 
+            }
+            
+            time = month + " " + day +  ", " + year + " " + hour + ":" + minute+ " " + dayOrNight;
+            
+            return time; 
+        }
         //Select Element by ID
         //Parse JSON and insert into chat-based on whether is received or sent
         $('#messageSection').empty();
@@ -197,9 +240,9 @@ $(document).ready(function(){ //AJAX messages requesting
         for(let i = 0; i < result.length; i++){
             //change class based on sender
             if(result[i][4] != result[i][2]){ 
-                div = $("<div class='received'> </div>");
+                div = $("<div class='received' title='" + getTime(result[i][1]) +  "'> </div>");
             } else { 
-                div = $("<div class='sent'> </div>");
+                div = $("<div class='sent' title='" + getTime(result[i][1]) +  "'> </div>");
             }
             //add small text indicating who sender of message is if previously it was someone else
             if(currentSender != result[i][2] || i == 0){ 
@@ -215,4 +258,6 @@ $(document).ready(function(){ //AJAX messages requesting
         alert("Messages could not be found");
       });
     });
+
+    $(".chatSel").first().trigger('click');
 });

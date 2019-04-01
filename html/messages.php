@@ -47,7 +47,7 @@
                       </div>
                       
                       <div class="message-section-header">
-                            <h3>Alex Yang</h3>
+               
                       </div>
             
                     <div>
@@ -80,7 +80,7 @@
                   <tr > 
                       <td class="chatSel" id=<?php echo "\"".$row['GroupID']."\""  ?> > 
                         <img id="profile" src=<?php echo "\"".$row2['GroupImage']."\""  ?>>
-                        <h4><?php echo $row2['Groupname']?></h4> 
+                        <h4 id="name"><?php echo $row2['Groupname']?></h4> 
                         <p class="timestamp"> <?php echo substr($row3['CreateDate'],11,5)  ?></p>
                         <p><?php echo $row3['Content']?></p>
    
@@ -98,17 +98,9 @@
           </div>
               
           <div class="message-section" id="messageSection">
-            <div class="received">
-                
-                <p> <span>Hey do i look good here? </span></p>
-                <img class="received" id="profile" src="../images/profiles/kyuYang69.jpg">
-
-            </div>
-      
-              
-      
                            
         </div>
+        
         <div class="input-box">
             <div id="myModal" class="modal-emoji">
               <div id="emojiContent" class="modal-content-emoji">
