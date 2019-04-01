@@ -33,7 +33,7 @@ INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`, `
 VALUES ('alex', 'alex', 'Alex', 'yang', 'yang7680@mylaurier.ca', 'taking a toasty dab');
 
 #
-# Table structure for table 'User'
+# Table structure for table 'Contacts'
 #
 
 DROP TABLE IF EXISTS `Contacts`;
@@ -53,15 +53,31 @@ VALUES (1, 3);
 # Table structure for table 'Contacts'
 #
 
-DROP TABLE IF EXISTS `UserGroup`;
 
-CREATE TABLE `UserGroup` (
+DROP TABLE IF EXISTS `Group`;
+
+CREATE TABLE `Group` (
   `GroupID` INTEGER NOT NULL AUTO_INCREMENT,
-  `Usernames` VARCHAR(50) NOT NULL, 
-  `JoinDate` DATETIME, 
+  `Groupname` VARCHAR(50) NOT NULL, 
   PRIMARY KEY (`GroupID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 
+SET autocommit=1;
+
+#
+# Table structure for table 'UserGroup'
+#
+
+
+DROP TABLE IF EXISTS `UserGroup`;
+
+CREATE TABLE UserGroup (
+    UserID INT,
+    GroupID INT,
+    FOREIGN KEY (UserID)
+        REFERENCES User(UserID)
+        ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 SET autocommit=1;
 
 #
@@ -75,8 +91,8 @@ CREATE TABLE `Message` (
   `Type` VARCHAR(50) NOT NULL, 
   `Content` LONGTEXT NOT NULL, 
   `CreateDate` DATETIME,  
-  `SenderID` INTEGER NOT NULL,
-  `ReceiverID` INTEGER NOT NULL, 
+  `GroupID` INTEGER NOT NULL,
+  `UserID` INTEGER NOT NULL, 
   PRIMARY KEY (`MessageID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 
