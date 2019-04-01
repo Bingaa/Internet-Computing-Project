@@ -192,8 +192,6 @@ window.onload = function(){
 
 }
 
-
-
 $(document).ready(function(){ //AJAX messages requesting
     $(".chatSel").click(function(event){
         $(".chatSel").css("background-color", "white");
@@ -259,11 +257,13 @@ $(document).ready(function(){ //AJAX messages requesting
             //add small text indicating who sender of message is if previously it was someone else
             if(currentSender != result[i][2] || i == 0){ 
                 div.append("<p class='sendername'>" + result[i][3] + "</p>");
+                currentSender = result[i][2];
             }
             div.append("<p> <span>" + result[i][0] +"</span></p>");
             $("#messageSection").append(div);
             
         }
+        document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
       });
       request.fail(function(jqXHR,textStatus){
         //
@@ -272,4 +272,9 @@ $(document).ready(function(){ //AJAX messages requesting
     });
 
     $(".chatSel").first().trigger('click');
+
+    var updateMsg = function(){ 
+        $('[name="activeMessageGroup"]').trigger('click');
+    }; 
+    setInterval(updateMsg,500);
 });
