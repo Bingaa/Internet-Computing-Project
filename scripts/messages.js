@@ -86,6 +86,14 @@ window.onload = function(){
             document.getElementById("chatInput").value = "";
             //Make messages scroll to bottom
             document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
+
+            //store message in db 
+            //need groupID and createDate
+            $groupId = $('[name="activeMessageGroup"]').attr("id");
+            $.post( "../sendMessage.php", { groupID: $groupId, content: text.innerHTML}, function(response){ 
+                console.log(response);
+            });
+
         }
     });
 
@@ -188,6 +196,10 @@ window.onload = function(){
 
 $(document).ready(function(){ //AJAX messages requesting
     $(".chatSel").click(function(event){
+        $(".chatSel").css("background-color", "white");
+        $(".chatSel").attr("name", "");
+        $(this).css("background-color", "#e6e6e6");
+        $(this).attr("name", "activeMessageGroup");
         $(".message-section-header").empty(); 
         $(".message-section-header").append("<h3>" + $(this).find("#name").text() + "</h3>" );
       var request = $.ajax({
