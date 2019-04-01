@@ -426,9 +426,9 @@ div.icons{
 
 
 .upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+  position: relative !important;
+  overflow: hidden !important;
+  display: inline-block !important;
 }
 
 .upload-btn-wrapper:hover { 
@@ -436,14 +436,14 @@ div.icons{
 }
 
 .btn-upload {
-  background-color: white;
-  padding: 8px 20px;
-  border: none; 
-  width: 400px; 
+  background-color: white !important;;
+  padding: 8px 20px !important;;
+  border: none !important;; 
+  width: 400px !important;; 
 }
 
 .btn-upload h3 { 
-  color: rgb(106, 146, 235);
+  color: rgb(106, 146, 235) !important;;
 }
 
 .btn-upload:hover { 
@@ -451,14 +451,14 @@ div.icons{
 }
 
 .btn-remove {
-  background-color: white;
-  padding: 8px 20px;
-  border: none; 
-  width: 400px; 
+  background-color: white !important;;
+  padding: 8px 20px !important;;
+  border: none !important;; 
+  width: 400px !important;; 
 }
 
 .btn-remove:hover{ 
-  cursor: pointer;
+  cursor: pointer !important;;
 }
 
 .btn-remove h3 { 

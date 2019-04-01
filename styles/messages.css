@@ -17,6 +17,9 @@
     font-size: 30px; 
 }
 
+.chatSel active{ 
+    background-color:#e6e6e6;
+}
 .chat-section-header i:hover{ 
     color: rgb(75, 37, 34);
     cursor: pointer;
