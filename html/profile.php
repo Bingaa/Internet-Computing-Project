@@ -8,14 +8,24 @@ session_start();
 // Create connection
 
 $connection = getDB(DBHOST, DBUSER, DBPASS, DBNAME);
-$id = $_SESSION["id"] ;
+$myid=$id = $_SESSION["id"] ;
 $editable = true;
+$added=false;
 if(isset($_GET["profileId"])){
   if ($_SESSION["id"]!=$_GET["profileId"]){
     $id = $_GET["profileId"] ;
+    $myid= $_SESSION["id"];
+    $query = "SELECT * FROM contacts WHERE contacts.UserID = $myid"; //check if thier friends already
+    $result = runQuery($connection, $query); 
+    $row = mysqli_fetch_array($result);
+    if(strpos($row["ContactID"],$id)!== false){
+      $added=true;
+      echo "friends!";
+    }
     $editable = false;
   }
 }
+$job=$location=$birthday=$interests="";
 
 $query = "SELECT * FROM user WHERE user.UserID = $id";
 $result = runQuery($connection, $query); 
@@ -48,41 +58,77 @@ $row = mysqli_fetch_array($result);
         <div class="info">
         <?php echo "<h2>".$row["FirstName"]." ".$row["LastName"]."</h2>"?>
             <h3 contenteditable="true" >Status</h3>
-
+            
+            <form action=<?php if($editable){echo "profile.php";}else{echo "profile.php?profileId=".$id;} ?> method="post">
             <table>
               <tr> 
                 <td><p>Job: </p></td>
-                <td><input type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> value=<?php if($editable){echo $row["Job"];}?>><?php if(!$editable){echo $row["Job"];}?></td>
+                <td><?php echo $row["Job"];?><input name="job" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
               </tr>
               <tr> 
                 <td><p>Location: </p></td>
-                <td><input type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> value=<?php if($editable){echo $row["Location"];}?>><?php if(!$editable){echo $row["Location"];}?></td>
+                <td><?php echo $row["Location"];?><input name="location" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
               </tr>
               <tr> 
                 <td><p>Birthday: </p></td>
-                <td><input type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> value=<?php if($editable){echo $row["Birthday"];}?>><?php if(!$editable){echo $row["Birthday"];}?></td>
+                <td><?php echo $row["Birthday"];?><input name="birthday" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> ></td>
               </tr>
               <tr> 
                 <td><p>Interests: </p></td>
-                <td><input type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> value=<?php if($editable){echo $row["Interests"];}?>><?php if(!$editable){echo $row["Interests"];}?></td>
+                <td><?php echo $row["Interests"];?><input name="interests" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> ></td>
               </tr>
             </table>
-            <button><?php if(!$editable){echo "Add Contact";}else{echo "Save";}  ?></button>
+              <button type="submit" name="save" <?php if($added){echo "style='display: none;'";} ?>><?php if(!$added){echo "Add Contact";}else{echo "Save";}  ?></button>
+            </form>
+            <?php
+            if($editable){
+              if(isset($_POST['job'])){
+                $job=$_POST['job'];
+                echo $job;
+              }
+              if(isset($_POST['location'])){
+                $location=$_POST['location'];
+                echo $location;
+              }
+              if(isset($_POST['birthday'])){
+                $birthday=$_POST['birthday'];
+                echo $birthday;
+              }
+              if(isset($_POST['interests'])){
+                $interests=$_POST['interests'];
+                echo $interests;
+              }
+              $query="UPDATE user SET Job='$job', Location='$location', Birthday='$birthday', Interests='$interests' WHERE UserID = $id;";
+              
+              if(isset($_POST['save'])){
+                $result = runQuery($connection, $query);
+                echo "Saved!";
+              }
+            }else if (!$added){
+              $query="INSERT INTO contacts VALUES ($myid,$id);";
+              echo $query;
+              if(isset($_POST['save'])){
+                $result = runQuery($connection, $query);
+                echo "Contact Added!";
+              }
+            }
+            ?>
+            
+            
         </div>
 
         <div id="myModal" class="modal">
-
-            <div class="modal-content">
-              <h2>Change Profile Picture</h2>
+          <div class="modal-content">
+            <h2>Change Profile Picture</h2>
             
-              <div class="upload-btn-wrapper">
-                <button class="btn-upload"><h3>Upload Photo</h3></button>
-                <input type="file" id="photoFile" accept="image/*" onchange="uploadPhoto(this);" />
-              </div>
-              <div class="upload-btn-wrapper">
-                <button class="btn-remove" onclick="removePhoto(this);"><h3>Remove Photo</h3></button>
-              </div>
+            <div class="upload-btn-wrapper">
+              <button class="btn-upload"><h3>Upload Photo</h3></button>
+              <input type="file" id="photoFile" accept="image/*" onchange="uploadPhoto(this);" />
             </div>
+            <div class="upload-btn-wrapper">
+              <button class="btn-remove" onclick="removePhoto(this);"><h3>Remove Photo</h3></button>
+            </div>
+          </div>
           
         </div>
 
