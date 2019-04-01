@@ -15,7 +15,7 @@ CREATE TABLE `User` (
   `FirstName` VARCHAR(50) NOT NULL, 
   `LastName` VARCHAR(50) NOT NULL,
   `Status` VARCHAR(50) NOT NULL,
-  `Image` VARCHAR(50) DEFAULT 'error.png', 
+  `Image` VARCHAR(50) DEFAULT '../images/error.png', 
   `Job` VARCHAR(50), 
   `Location` VARCHAR(50), 
   `Email` VARCHAR(50) NOT NULL,  
@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `Group`;
 CREATE TABLE `Group` (
   `GroupID` INTEGER NOT NULL AUTO_INCREMENT,
   `Groupname` VARCHAR(50) NOT NULL, 
-  `GroupImage` VARCHAR(50) DEFAULT 'error.png',
+  `GroupImage` VARCHAR(50) DEFAULT '../images/group.png',
   PRIMARY KEY (`GroupID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci;;
 
@@ -68,13 +68,13 @@ SET autocommit=1;
 
 
 INSERT INTO `Group` (`Groupname`,`GroupImage`)
-VALUES ('Group1','../images/profiles/kyuYang69.jpg');
+VALUES ('Group1','../images/group.png');
 
 INSERT INTO `Group` (`Groupname`,`GroupImage`)
-VALUES ('Group2','../images/profiles/kyuYang69.jpg');
+VALUES ('Group2','../images/group.png');
 
 INSERT INTO `Group` (`Groupname`,`GroupImage`)
-VALUES ('Group3','../images/profiles/kyuYang69.jpg');
+VALUES ('Group3','../images/group.png');
 
 
 #

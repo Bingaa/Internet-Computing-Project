@@ -14,9 +14,6 @@
   <?php 
   include '../include/config.php';
   include '../include/functions.php';
-    session_start(); 
-    $chattime = getDB();
-    //$currentUser needs to be set here
   ?>
 
 <div class="topnav">
@@ -60,39 +57,8 @@
 
           <div class="chat-section">
 
-              <table>
-              <?php
-            //Query UserGroup for Groups associated with UserID
-            $currentUser = $_SESSION["id"]; 
-            $groupQuery = "SELECT * FROM UserGroup WHERE UserID=".$currentUser;
-            mysqli_set_charset($chattime,'utf8');
-            $groupInfo = runQuery($chattime, $groupQuery);
-            while ($row = mysqli_fetch_assoc($groupInfo)){//While loop-all groups that user is associated with
-              $groupDetailsQuery = "SELECT * FROM `group` WHERE GroupID=".$row['GroupID']." LIMIT 1";
-              $groupDetails = runQuery($chattime, $groupDetailsQuery);
-              $row2 = mysqli_fetch_assoc($groupDetails);//get group details from Group Table, there should only be 1 because GroupID is unique
-              $latestmessageQuery = "SELECT * FROM `Message` WHERE GroupID=".$row['GroupID']." ORDER BY CreateDate DESC LIMIT 1" ; //get latest message in coversation
-              $latestmessage= runQuery($chattime,$latestmessageQuery);
-              $row3 = mysqli_fetch_assoc($latestmessage);
-
-              $row2['Groupname'] = str_replace($_SESSION["fullName"] . ", ", " " ,$row2["Groupname"]);
-              $row2['Groupname'] = str_replace( ", " . $_SESSION["fullName"], " " ,$row2["Groupname"]);
-            ?>
-                  <tr > 
-                      <td class="chatSel" id=<?php echo "\"".$row['GroupID']."\""  ?> > 
-                        <img id="profile" src=<?php echo "\"".$row2['GroupImage']."\""  ?>>
-                        <h4 id="name"><?php echo $row2['Groupname']?></h4> 
-                        <p class="timestamp"> <?php echo substr($row3['CreateDate'],11,5)  ?></p>
-                        <p><?php echo $row3['Content']?></p>
-   
-                      </td>
-                  </tr>
-                  <?php
-                
-
-              }
-  
-              ?>
+              <table id="messages-sidebar">
+              <?php include "../getMessageGroups.php"?>
               </table>
 
 

@@ -200,17 +200,17 @@ $(document).ready(function(){ //AJAX messages requesting
         $(this).attr("name", "activeMessageGroup");
         $(".message-section-header").empty(); 
         $(".message-section-header").append("<h3>" + $(this).find("#name").text() + "</h3>" );
-      var request = $.ajax({
+        var request = $.ajax({
         type:"GET",
         url: "../scripts/messageRequest.php",
         data:{input:$(this).attr("id")},
         dataType:'JSON',
-      });
-      request.done(function(result){
+        });
+        request.done(function(result){
         //Select Element by ID
         //Parse JSON and insert into chat-based on whether is received or sent
         $('#messageSection').empty();
-        let currentSender = result[0][2]; 
+        let currentSender = 0; 
         let div; 
         for(let i = 0; i < result.length; i++){
             //change class based on sender
@@ -220,7 +220,7 @@ $(document).ready(function(){ //AJAX messages requesting
                 div = $("<div class='sent' title='" + result[i][1] +  "'> </div>");
             }
             //add small text indicating who sender of message is if previously it was someone else
-            if(currentSender != result[i][2] || i == 0){ 
+            if(currentSender != result[i][2] ){ 
                 div.append("<p class='sendername'>" + result[i][3] + "</p>");
                 currentSender = result[i][2];
             }
@@ -229,11 +229,13 @@ $(document).ready(function(){ //AJAX messages requesting
             
         }
         document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
-      });
-      request.fail(function(jqXHR,textStatus){
+        });
+        request.fail(function(jqXHR,textStatus){
         //
         alert("Messages could not be found");
-      });
+        });
+
+      
     });
 
     $(".chatSel").first().trigger('click');
