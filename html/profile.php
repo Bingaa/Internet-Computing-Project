@@ -52,7 +52,7 @@ $row = mysqli_fetch_array($result);
         <a href="messages.php"><i class="fas fa-comment" title="Messages"></i></a> 
     </div>
     <div class="white-card-wide" style="margin-top: 50px;">        
-        <img id="profile" class="display-pic" src="../images/error.png">
+        <img id="profile" class="display-pic" src=<?php echo $row["Image"];?>>
     
         <div class="info">
         <?php echo "<h2>".$row["FirstName"]." ".$row["LastName"]."</h2>"?>
@@ -94,6 +94,9 @@ $row = mysqli_fetch_array($result);
         </div>
         </form>
             <?php
+            $targetdir = '../documentation/';
+            
+
             if($editable){
               if(isset($_POST['job'])){
                 $job=$_POST['job'];
@@ -108,7 +111,13 @@ $row = mysqli_fetch_array($result);
                 $interests=$_POST['interests'];
               }
               if(isset($_FILES["photoFile"])){
-                $fname = $_FILES["photoFile"]["name"];
+                $targetfile = $targetdir.$_FILES['photoFile']['name'];
+                if (move_uploaded_file($_FILES['photoFile']['tmp_name'], $targetfile)) {
+                  $fname=$targetfile;
+                } else { 
+                  echo "upload failed";
+                }
+
              }
               $query="UPDATE user SET Job='$job', Location='$location', Birthday='$birthday', Interests='$interests', Image='$fname' WHERE UserID = $id;";
               
