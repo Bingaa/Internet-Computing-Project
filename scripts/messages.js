@@ -174,7 +174,7 @@ $(document).ready(function(){ //AJAX messages requesting
       var request = $.ajax({
         type:"GET",
         url: "../scripts/messageRequest.php",
-        data:{input:event.target.id},
+        data:{input:$(this).attr("id")},
         dataType:'JSON',
       });
       request.done(function(result){
