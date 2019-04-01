@@ -11,6 +11,8 @@ $connection = getDB(DBHOST, DBUSER, DBPASS, DBNAME);
 $myid=$id = $_SESSION["id"] ;
 $editable = true;
 $added=false;
+
+$message = "";
 if(isset($_GET["profileId"])){
   if ($_SESSION["id"]!=$_GET["profileId"]){
     $id = $_GET["profileId"] ;
@@ -24,7 +26,56 @@ if(isset($_GET["profileId"])){
     $editable = false;
   }
 }
-$fname=$job=$location=$birthday=$interests="";
+if(isset($_POST["save"])){ 
+    $targetdir = '../documentation/';
+  
+
+  if($editable){
+    if(isset($_POST['job'])){
+      $job=$_POST['job'];
+    }
+    if(isset($_POST['status'])){
+      $status=$_POST['status'];
+    }
+    if(isset($_POST['location'])){
+      $location=$_POST['location'];
+    }
+    if(isset($_POST['birthday'])){
+      $birthday=$_POST['birthday'];
+    }
+    if(isset($_POST['interests'])){
+      $interests=$_POST['interests'];
+    }
+    if(isset($_FILES["photoFile"])){
+      $targetfile = $targetdir.$_FILES['photoFile']['name'];
+      if (move_uploaded_file($_FILES['photoFile']['tmp_name'], $targetfile)) {
+        $fname=$targetfile;
+      } else { 
+        $fname = "";
+      }
+   }
+
+   if($fname != ""){ 
+     $query="UPDATE user SET Job='$job', Status='$status', Location='$location', Birthday='$birthday', Interests='$interests', Image='$fname' WHERE UserID = $id;";
+   } else { 
+    $query="UPDATE user SET Job='$job', Status='$status', Location='$location', Birthday='$birthday', Interests='$interests' WHERE UserID = $id;";
+   }
+   
+    
+    if(isset($_POST['save'])){
+      $result = runQuery($connection, $query);
+      $message =  "Saved!";
+      
+    }
+  }else if (!$added){
+    $query="INSERT INTO contacts VALUES ($myid,$id);";
+    if(isset($_POST['save'])){
+      $result = runQuery($connection, $query);
+      $message =  "Contact Added!";
+    }
+  }
+}
+$fname=$job=$location=$birthday=$interests=$status="";
 
 $query = "SELECT * FROM user WHERE user.UserID = $id";
 $result = runQuery($connection, $query); 
@@ -51,30 +102,39 @@ $row = mysqli_fetch_array($result);
         <a href="search.php"><i class="fa fa-fw fa-search" title="Search for Contacts"></i></a> 
         <a href="messages.php"><i class="fas fa-comment" title="Messages"></i></a> 
     </div>
+
     <div class="white-card-wide" style="margin-top: 50px;">        
         <img id="profile" class="display-pic" src=<?php echo $row["Image"];?>>
     
         <div class="info">
-        <?php echo "<h2>".$row["FirstName"]." ".$row["LastName"]."</h2>"?>
-            <h3 contenteditable="true" >Status</h3>
-            
+        <?php echo "<h2>".$row["FirstName"]." ".$row["LastName"]."</h2>"?>            
             <form enctype="multipart/form-data" action=<?php if($editable){echo "profile.php";}else{echo "profile.php?profileId=".$id;} ?> method="post">
+            <?php
+              $query = "SELECT * FROM user WHERE user.UserID = $id";
+              $result = runQuery($connection, $query); 
+              $row = mysqli_fetch_array($result);
+            ?>
+            
             <table>
               <tr> 
+                <td><p>Status: </p></td>
+                <td><input value =<?php echo "'" .$row["Status"] . "'"?> name="status" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
+              </tr>
+              <tr> 
                 <td><p>Job: </p></td>
-                <td><?php echo $row["Job"];?><input name="job" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
+                <td><input value =<?php echo "'" .$row["Job"] . "'"?> name="job" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
               </tr>
               <tr> 
                 <td><p>Location: </p></td>
-                <td><?php echo $row["Location"];?><input name="location" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
+                <td><input value =<?php echo "'" .$row["Location"] . "'"?> name="location" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
               </tr>
               <tr> 
                 <td><p>Birthday: </p></td>
-                <td><?php echo $row["Birthday"];?><input name="birthday" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> ></td>
+                <td><input value =<?php echo "'" .substr($row["Birthday"],0,10). "'"?> name="birthday" type=<?php if(!$editable){echo "hidden";}else{echo "date";} ?> ></td>
               </tr>
               <tr> 
                 <td><p>Interests: </p></td>
-                <td><?php echo $row["Interests"];?><input name="interests" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> ></td>
+                <td><input value =<?php echo "'" .$row["Interests"] . "'"?> name="interests" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> ></td>
               </tr>
             </table>
               <button type="submit" name="save" <?php if($added){echo "style='display: none;'";} ?>><?php if(!$added && !$editable){echo "Add Contact";}else{echo "Save";}  ?></button>
@@ -84,60 +144,20 @@ $row = mysqli_fetch_array($result);
             
             <div class="upload-btn-wrapper">
               <button class="btn-upload"><h3>Upload Photo</h3></button>
-              <input type="file" name="photoFile" accept="image/*" onchange="uploadPhoto(this);" />
+              <input type="file" id="photoFile" name="photoFile" accept="image/*" onchange="uploadPhoto(this);" />
             </div>
             <div class="upload-btn-wrapper">
               <button class="btn-remove" onclick="removePhoto(this);"><h3>Remove Photo</h3></button>
             </div>
           </div>
-          
         </div>
-        </form>
-            <?php
-            $targetdir = '../documentation/';
-            
-
-            if($editable){
-              if(isset($_POST['job'])){
-                $job=$_POST['job'];
-              }
-              if(isset($_POST['location'])){
-                $location=$_POST['location'];
-              }
-              if(isset($_POST['birthday'])){
-                $birthday=$_POST['birthday'];
-              }
-              if(isset($_POST['interests'])){
-                $interests=$_POST['interests'];
-              }
-              if(isset($_FILES["photoFile"])){
-                $targetfile = $targetdir.$_FILES['photoFile']['name'];
-                if (move_uploaded_file($_FILES['photoFile']['tmp_name'], $targetfile)) {
-                  $fname=$targetfile;
-                } else { 
-                  echo "upload failed";
-                }
-
-             }
-              $query="UPDATE user SET Job='$job', Location='$location', Birthday='$birthday', Interests='$interests', Image='$fname' WHERE UserID = $id;";
-              
-              if(isset($_POST['save'])){
-                $result = runQuery($connection, $query);
-                echo "Saved!";
-              }
-            }else if (!$added){
-              $query="INSERT INTO contacts VALUES ($myid,$id);";
-              if(isset($_POST['save'])){
-                $result = runQuery($connection, $query);
-                echo "Contact Added!";
-              }
-            }
-            ?>
-            
-            
+        </form>   
+        <?php 
+          echo $message;
+          ?>   
         </div>
 
-        
+ 
       
 
     </div>
