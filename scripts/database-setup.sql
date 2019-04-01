@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS `chatTime`;
-CREATE DATABASE IF NOT EXISTS `chatTime`;
+CREATE DATABASE IF NOT EXISTS `chatTime` CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 USE `chatTime`;
 
 #
@@ -23,7 +23,7 @@ CREATE TABLE `User` (
   `Interests` LONGTEXT, 
   PRIMARY KEY (`UserID`), 
   UNIQUE(`UserName`)
-) ENGINE=innodb DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`, `Status` )
 VALUES ('andrew69', 'andrew69', 'Andrew', 'Fong', 'fong7680@mylaurier.ca', 'Just chillllaaanggg XD');
@@ -42,7 +42,7 @@ CREATE TABLE `Contacts` (
   `UserID` INTEGER NOT NULL, 
   `ContactID` INTEGER NOT NULL, 
   PRIMARY KEY (`UserID`,`ContactID`)
-) ENGINE=innodb DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci;;
 
 INSERT INTO Contacts (`UserID`, `ContactID`)
 VALUES (1, 2);
@@ -61,7 +61,7 @@ CREATE TABLE `Group` (
   `Groupname` VARCHAR(50) NOT NULL, 
   `GroupImage` VARCHAR(50) DEFAULT 'error.png',
   PRIMARY KEY (`GroupID`)
-) ENGINE=innodb DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci;;
 
 SET autocommit=1;
 
@@ -91,7 +91,7 @@ CREATE TABLE UserGroup (
     FOREIGN KEY (UserID)
         REFERENCES User(UserID)
         ON DELETE CASCADE
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci;;
 SET autocommit=1;
 
 INSERT INTO `UserGroup`(`UserID`, `GroupID`)
@@ -112,12 +112,12 @@ CREATE TABLE `Message` (
   `MessageID` INTEGER NOT NULL AUTO_INCREMENT, 
   `Type` VARCHAR(50) NOT NULL, 
   `Content` LONGTEXT NOT NULL, 
-  `CreateDate` DATETIME,  
+  `CreateDate` DATETIME DEFAULT now(),  
   `GroupID` INTEGER NOT NULL,
   `UserID` INTEGER NOT NULL, 
   `SenderName` VARCHAR(50) NOT NULL,  
   PRIMARY KEY (`MessageID`)
-) ENGINE=innodb DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci;;
 
 INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`, `SenderName` )
 VALUES ("first sikh message", '1000-01-01 01:23:00', 1, 1, 'Andrew Fong' );

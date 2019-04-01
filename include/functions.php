@@ -10,6 +10,8 @@ function getDB()
 {
 	// connect to the DB and returns a reference to the DB
 	$conn = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+	mysqli_set_charset($conn, 'utf8mb4');
+
 	if (mysqli_connect_errno()){
 		echo "failed to connect".mysqli_connect_errno();
 	}

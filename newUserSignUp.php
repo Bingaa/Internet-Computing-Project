@@ -18,6 +18,7 @@ if($results != false){
     $id = mysqli_fetch_assoc($results)["UserID"];      
     session_start(); 
     $_SESSION["id"] = $id; 
+    $_SESSION["fullName"] = $firstName . " " . $lastName; 
     echo "true"; 
 } else { 
     echo "false"; 
