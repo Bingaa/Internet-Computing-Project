@@ -170,7 +170,6 @@ window.onload = function(){
 
 $(document).ready(function(){ //AJAX messages requesting
     $(".chatSel").click(function(event){
-        alert("hi");
       var request = $.ajax({
         type:"GET",
         url: "../scripts/messageRequest.php",
@@ -180,6 +179,8 @@ $(document).ready(function(){ //AJAX messages requesting
       request.done(function(result){
         //Select Element by ID
         //Parse JSON and insert into chat-based on whether is received or sent
+        $('#messageSection').empty();
+        $("#messageSection").append("<div class='received'><p> <span>" + result[0][0] +"</span></p></div>");
       });
       request.fail(function(jqXHR,textStatus){
         //
