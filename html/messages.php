@@ -58,7 +58,9 @@
         </div class="messages-container">
 
           <div class="chat-section">
-            <?php
+
+              <table>
+              <?php
             //Query UserGroup for Groups associated with UserID
             $currentUser = 1; //REMOVE after
             $groupQuery = "SELECT * FROM UserGroup WHERE UserID=".$currentUser;
@@ -73,9 +75,8 @@
               $row3 = mysqli_fetch_assoc($latestmessage);
 
             ?>
-              <table>
-                  <tr> 
-                      <td> 
+                  <tr > 
+                      <td class="chatSel" id=<?php echo "\"".$row['GroupID']."\""  ?> > 
                         <img id="profile" src=<?php echo "\"".$row2['GroupImage']."\""  ?>>
                         <h4><?php echo $row2['Groupname']?></h4> 
                         <p class="timestamp"> <?php echo substr($row3['CreateDate'],11,5)  ?></p>
@@ -83,13 +84,14 @@
    
                       </td>
                   </tr>
-              </table>
-            <?php
+                  <?php
                 
 
-            }
+              }
+  
+              ?>
+              </table>
 
-            ?>
 
           </div>
               
