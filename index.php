@@ -26,13 +26,15 @@ if(isset($_SESSION["id"])){
         if(isset($_POST["userName"]) && isset($_POST["password"])){ 
             $userName = $_POST["userName"]; 
             $password = $_POST["password"]; 
-            $query = "SELECT UserID FROM User WHERE UserName = '" .$userName ."' AND Password ='" .$password ."'"; 
+            $query = "SELECT * FROM User WHERE UserName = '" .$userName ."' AND Password ='" .$password ."'"; 
             $results = runQuery($connection, $query);  
-            $id = mysqli_fetch_assoc($results)["UserID"];   
-            if(empty($id)){ 
+            $result = mysqli_fetch_assoc($results);   
+            if(empty($result["UserID"])){ 
                 echo "<p> Invalid UserName or Password</p>";
             } else { 
-                $_SESSION["id"] = $id; 
+                $_SESSION["id"] = $result["UserID"]; 
+                $_SESSION["fullName"] = $result["FirstName"] . " " . $result["LastName"];
+                echo 
                 header("Location: html/messages.php");
             }
         }

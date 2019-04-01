@@ -62,7 +62,7 @@
               <table>
               <?php
             //Query UserGroup for Groups associated with UserID
-            $currentUser = 1; //REMOVE after
+            $currentUser = $_SESSION["id"]; 
             $groupQuery = "SELECT * FROM UserGroup WHERE UserID=".$currentUser;
             mysqli_set_charset($chattime,'utf8');
             $groupInfo = runQuery($chattime, $groupQuery);
@@ -74,6 +74,8 @@
               $latestmessage= runQuery($chattime,$latestmessageQuery);
               $row3 = mysqli_fetch_assoc($latestmessage);
 
+              $row2['Groupname'] = str_replace($_SESSION["fullName"] . ", ", " " ,$row2["Groupname"]);
+              $row2['Groupname'] = str_replace( ", " . $_SESSION["fullName"], " " ,$row2["Groupname"]);
             ?>
                   <tr > 
                       <td class="chatSel" id=<?php echo "\"".$row['GroupID']."\""  ?> > 

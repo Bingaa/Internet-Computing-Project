@@ -87,6 +87,7 @@ DROP TABLE IF EXISTS UserGroup;
 CREATE TABLE UserGroup (
     UserID INT,
     GroupID INT,
+    Primary KEY (UserID, GroupID),
     FOREIGN KEY (UserID)
         REFERENCES User(UserID)
         ON DELETE CASCADE

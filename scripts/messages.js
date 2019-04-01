@@ -53,6 +53,18 @@ window.onload = function(){
 
     $("#createMessageButton").click(function(){ 
         $("#myModalMessage").css("display", "none");
+        $.ajax({
+            url:"../createMessageGroup.php",
+            type:"post",
+            data: {ids:contactsCurrentGroup},
+            success:function(data){
+                console.log(data); 
+                location.reload(true); 
+            },
+            error: function() {
+                alert("fail");
+            }
+        });
     });
 
     //Make messages scroll to bottom
