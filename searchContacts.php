@@ -8,7 +8,7 @@ $searchString = $_REQUEST["searchString"];
 session_start(); 
 $id = $_SESSION["id"];
 
-$query = "SELECT ContactID, FirstName, LastName, Image FROM User INNER JOIN Contacts ON User.UserID = Contacts.ContactID WHERE Contacts.UserID = {$id} AND UserName LIKE '{$searchString}%' OR CONCAT(FirstName, ' ', LastName) LIKE '{$searchString}%'"; 
+$query = "SELECT ContactID, FirstName, LastName, Image FROM User INNER JOIN Contacts ON User.UserID = Contacts.ContactID WHERE Contacts.UserID = {$id} AND UserName LIKE '{$searchString}%' OR Contacts.UserID = {$id} AND CONCAT(FirstName, ' ', LastName) LIKE '{$searchString}%'"; 
 $results = runQuery($connection, $query);
 
 $json_array = array(); 
