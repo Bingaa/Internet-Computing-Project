@@ -54,108 +54,32 @@
         </div class="messages-container">
 
           <div class="chat-section">
+            <?php
+            //Query Database for Groups associated with UserID
+            //h4 will have group name
+            //img will be user image
+            //
+
+
+
+            // Create a while loop that will populate this bar with messages
+            ?>
               <table>
                   <tr> 
                       <td> 
                         <img id="profile" src="../images/profiles/kyuYang69.jpg">
           
-                        <h4>Alex Yang</h4>
+                        <h4>Alex Yang</h4> 
                         <p class="timestamp">9:52PM</p>
                         <p>Wanna go Mcdonalds? </p>
    
                       </td>
                   </tr>
-                  <tr> 
-                        <td> 
-                          <img id="profile" src="../images/profiles/fong69.jpg">
-                          <h4>Andrew Fong</h4>
-                          <p class="timestamp">9:52PM</p>
-                          <p>fOOD!???? </p>
-                        </td>
-                    </tr>
-                    <tr> 
-                            <td> 
-                              <img id="profile" src="../images/profiles/kyuYang69.jpg">
-                              <h4>Alex Yang</h4>
-                              <p class="timestamp">9:52PM</p>
-                              <p>Wanna go Mcdonalds? </p>
-                            </td>
-                        </tr>
-                        <tr> 
-                              <td> 
-                                <img id="profile" src="../images/profiles/fong69.jpg">
-                                <h4>Andrew Fong</h4>
-                                <p class="timestamp">9:52PM</p>
-                                <p>fOOD!???? </p>
-                              </td>
-                          </tr>
-                          <tr> 
-                                <td> 
-                                  <img id="profile" src="../images/profiles/kyuYang69.jpg">
-                                  <h4>Alex Yang</h4>
-                                  <p class="timestamp">9:52PM</p>
-                                  <p>Wanna go Mcdonalds? </p>
-                                </td>
-                            </tr>
-                            <tr> 
-                                  <td> 
-                                    <img id="profile" src="../images/profiles/fong69.jpg">
-                                    <h4>Andrew Fong</h4>
-                                    <p class="timestamp">9:52PM</p>
-                                    <p>fOOD!???? </p>
-                                  </td>
-                              </tr>
-                              <tr> 
-                                    <td> 
-                                      <img id="profile" src="../images/profiles/kyuYang69.jpg">
-                                      <h4>Alex Yang</h4>
-                                      <p class="timestamp">9:52PM</p>
-                                      <p>Wanna go Mcdonalds? </p>
-                                    </td>
-                                </tr>
-                                <tr> 
-                                      <td> 
-                                        <img id="profile" src="../images/profiles/fong69.jpg">
-                                        <h4>Andrew Fong</h4>
-                                        <p class="timestamp">9:52PM</p>
-                                        <p>fOOD!???? </p>
-                                      </td>
-                                  </tr>
-                                  <tr> 
-                                        <td> 
-                                          <img id="profile" src="../images/profiles/kyuYang69.jpg">
-                                          <h4>Alex Yang</h4>
-                                          <p class="timestamp">9:52PM</p>
-                                          <p>Wanna go Mcdonalds? </p>
-                                        </td>
-                                    </tr>
-                                    <tr> 
-                                          <td> 
-                                            <img id="profile" src="../images/profiles/fong69.jpg">
-                                            <h4>Andrew Fong</h4>
-                                            <p class="timestamp">9:52PM</p>
-                                            <p>fOOD!???? </p>
-                                          </td>
-                                      </tr>
-
-                                      <tr> 
-                                            <td> 
-                                              <img id="profile" src="../images/profiles/kyuYang69.jpg">
-                                              <h4>Alex Yang</h4>
-                                              <p class="timestamp">9:52PM</p>
-                                              <p>Wanna go Mcdonalds? </p>
-                                            </td>
-                                        </tr>
-                                        <tr> 
-                                              <td> 
-                                                <img id="profile" src="../images/profiles/fong69.jpg">
-                                                <h4>Andrew Fong</h4>
-                                                <p class="timestamp">9:52PM</p>
-                                                <p>fOOD!???? </p>
-                                              </td>
-                                          </tr>
-
               </table>
+            <?php
+
+
+            ?>
 
           </div>
               

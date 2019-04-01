@@ -59,6 +59,7 @@ DROP TABLE IF EXISTS `Group`;
 CREATE TABLE `Group` (
   `GroupID` INTEGER NOT NULL AUTO_INCREMENT,
   `Groupname` VARCHAR(50) NOT NULL, 
+  `GroupImage` VARCHAR(50) DEFAULT 'error.png',
   PRIMARY KEY (`GroupID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 
@@ -69,7 +70,7 @@ SET autocommit=1;
 #
 
 
-DROP TABLE IF EXISTS `UserGroup`;
+DROP TABLE IF EXISTS UserGroup;
 
 CREATE TABLE UserGroup (
     UserID INT,
