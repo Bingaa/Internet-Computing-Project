@@ -27,7 +27,7 @@ if(isset($_GET["profileId"])){
   }
 }
 if(isset($_POST["save"])){ 
-    $targetdir = '../documentation/';
+    $targetdir = '../images/profiles/';
   
 
   if($editable){
@@ -48,8 +48,10 @@ if(isset($_POST["save"])){
     }
     if(isset($_FILES["photoFile"])){
       $targetfile = $targetdir.$_FILES['photoFile']['name'];
+      $ext = pathinfo($_FILES['photoFile']['name'], PATHINFO_EXTENSION);
       if (move_uploaded_file($_FILES['photoFile']['tmp_name'], $targetfile)) {
-        $fname=$targetfile;
+        rename($targetdir.$_FILES['photoFile']['name'], $targetdir. $_SESSION["id"]. "." .$ext);
+        $fname= $targetdir. $_SESSION["id"] . "." .$ext;
       } else { 
         $fname = "";
       }
