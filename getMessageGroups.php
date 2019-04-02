@@ -3,10 +3,12 @@
     include_once('include/config.php');
     include_once('include/functions.php');
     session_start();
+    $q = "SET CHARACTER SET utf8mb4";
     $chattime = getDB(DBHOST, DBUSER, DBPASS, DBNAME); 
+    runQuery($chattime, $q);
     $currentUser = $_SESSION["id"]; 
     $groupQuery = "SELECT * FROM UserGroup WHERE UserID=".$currentUser;
-    mysqli_set_charset($chattime,'utf8');
+    
     $groupInfo = runQuery($chattime, $groupQuery);
     while ($row = mysqli_fetch_assoc($groupInfo)){//While loop-all groups that user is associated with
         $groupDetailsQuery = "SELECT * FROM `group` WHERE GroupID=".$row['GroupID']." LIMIT 1";
