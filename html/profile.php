@@ -17,11 +17,12 @@ if(isset($_GET["profileId"])){
   if ($_SESSION["id"]!=$_GET["profileId"]){
     $id = $_GET["profileId"] ;
     $myid= $_SESSION["id"];
-    $query = "SELECT * FROM contacts WHERE contacts.UserID = $myid"; //check if thier friends already
+    $query = "SELECT * FROM Contacts WHERE Contacts.UserID = $myid"; //check if thier friends already
     $result = runQuery($connection, $query); 
-    $row = mysqli_fetch_array($result);
-    if(strpos($row["ContactID"],$id)!== false){
-      $added=true;
+    while($row = mysqli_fetch_array($result)){ 
+      if(strpos($row["ContactID"],$id)!== false){
+        $added=true;
+      }
     }
     $editable = false;
   }
