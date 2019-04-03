@@ -20,8 +20,10 @@ if(isset($_GET["profileId"])){
     $query = "SELECT * FROM contacts WHERE contacts.UserID = $myid"; //check if thier friends already
     $result = runQuery($connection, $query); 
     $row = mysqli_fetch_array($result);
-    if(strpos($row["ContactID"],$id)!== false){
-      $added=true;
+    while($row = mysqli_fetch_array($result)){ 
+      if(strpos($row["ContactID"],$id)!== false){
+        $added=true;
+      }
     }
     $editable = false;
   }
