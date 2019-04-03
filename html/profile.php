@@ -132,7 +132,7 @@ $row = mysqli_fetch_array($result);
               </tr>
               <tr> 
                 <td><p>Birthday: </p></td>
-                <td><input value =<?php echo "'" .substr($row["Birthday"],0,10). "'"?> name="birthday" type="text"<?php if(!$editable){echo "readOnly";}?> ></td>
+                <td><input value =<?php echo "'" .substr($row["Birthday"],0,10). "'"?> name="birthday" type="date"<?php if(!$editable){echo "readOnly";}?> ></td>
               </tr>
               <tr> 
                 <td><p>Interests: </p></td>
