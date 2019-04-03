@@ -203,6 +203,8 @@ window.onload = function(){
 
 }
 
+let messageIndicator = 0; 
+
 $(document).ready(function(){ //AJAX messages requesting
     $(".chatSel").click(function(event){
         $(".chatSel").css("background-color", "white");
@@ -243,7 +245,12 @@ $(document).ready(function(){ //AJAX messages requesting
             $("#messageSection").append(div);
             
         }
-        document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
+        //make so if new message in chat automatically chat div scrolls to bottom 
+        if(messageIndicator < result.length){ 
+            messageIndicator = result.length; 
+            document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
+        }
+
         });
         request.fail(function(jqXHR,textStatus){
         //
