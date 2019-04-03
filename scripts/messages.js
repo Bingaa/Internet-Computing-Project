@@ -78,8 +78,10 @@ window.onload = function(){
         div.appendChild(message);
         var text = document.createElement("span"); 
         text.innerHTML = input; 
-        if(text.querySelectorAll("img")){ 
-            text.style.backgroundColor = "white";
+        if(text.querySelectorAll("img").length != 0){ 
+            text.classList.add("gif-span");
+        } else { 
+            text.classList.add("text-span");
         }
         message.appendChild(text); 
         document.getElementById("messageSection").appendChild(div);
@@ -306,7 +308,9 @@ $(document).ready(function(){ //AJAX messages requesting
  
         document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
         
+        if(result[result.length - 1]){ 
         messageTime = result[result.length-1][1];
+        }
         });
         request.fail(function(jqXHR,textStatus){
         //
