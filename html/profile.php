@@ -120,23 +120,23 @@ $row = mysqli_fetch_array($result);
             <table>
               <tr> 
                 <td><p>Status: </p></td>
-                <td><input value =<?php echo "'" .$row["Status"] . "'"?> name="status" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
+                <td><input value =<?php echo "'" .$row["Status"] . "'"?> name="status"  type="text"<?php if(!$editable){echo "readOnly";}?>></td>
               </tr>
               <tr> 
                 <td><p>Job: </p></td>
-                <td><input value =<?php echo "'" .$row["Job"] . "'"?> name="job" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
+                <td><input value =<?php echo "'" .$row["Job"] . "'"?> name="job" type="text"<?php if(!$editable){echo "readOnly";}?>></td>
               </tr>
               <tr> 
                 <td><p>Location: </p></td>
-                <td><input value =<?php echo "'" .$row["Location"] . "'"?> name="location" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?>></td>
+                <td><input value =<?php echo "'" .$row["Location"] . "'"?> name="location" type="text"<?php if(!$editable){echo "readOnly";} ?>></td>
               </tr>
               <tr> 
                 <td><p>Birthday: </p></td>
-                <td><input value =<?php echo "'" .substr($row["Birthday"],0,10). "'"?> name="birthday" type=<?php if(!$editable){echo "hidden";}else{echo "date";} ?> ></td>
+                <td><input value =<?php echo "'" .substr($row["Birthday"],0,10). "'"?> name="birthday" type="text"<?php if(!$editable){echo "readOnly";}?> ></td>
               </tr>
               <tr> 
                 <td><p>Interests: </p></td>
-                <td><input value =<?php echo "'" .$row["Interests"] . "'"?> name="interests" type=<?php if(!$editable){echo "hidden";}else{echo "text";} ?> ></td>
+                <td><input value =<?php echo "'" .$row["Interests"] . "'"?> name="interests" type="text"<?php if(!$editable){echo "readOnly";}?> ></td>
               </tr>
             </table>
               <button type="submit" name="save" <?php if($added){echo "style='display: none;'";} ?>><?php if(!$added && !$editable){echo "Add Contact";}else{echo "Save";}  ?></button>

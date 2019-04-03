@@ -476,3 +476,7 @@ div.icons{
   cursor: pointer !important;
 }
 
+input:read-only{ 
+  background-color: white; 
+  border:none; 
+}
