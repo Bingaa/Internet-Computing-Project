@@ -151,12 +151,26 @@
               </div>
                 <input id="chatInput"type="text" placeholder="Type a message...">
                 <i id="emojiButton" class="far fa-smile" title="Send Emoji"></i>
-                <i id="sendImageButton" class="far fa-image" title="Send Image"></i>
-                <input id="imageFile" type="file" accept="image/*" hidden/>
+                <i id="sendImageButton" name="sendImageButton" class="far fa-image" title="Send Image"></i>
+                <input id="imageFile" name="sendImage" type="file" accept="image/*" hidden/>
                 <i class="fas fa-camera" title="Take Picture"></i>
                 <i class="fas fa-paperclip" title="Send File"></i>
                 <i class="fas fa-map-marker-alt" title="Send Location"></i>
         </div> 
+
+        <?php 
+
+        $targetdir = "../images/messages/";
+            if(isset($_FILES["sendImageButton"])){
+              $targetfile = $targetdir.$_FILES['sendImageButton']['name'];
+              $ext = pathinfo($_FILES['sendImageButton']['name'], PATHINFO_EXTENSION);
+              if (move_uploaded_file($_FILES['sendImageButton']['tmp_name'], $targetfile)) {
+                rename($targetdir.$_FILES['sendImageButton']['name'], $targetdir. $_SESSION["id"]. "." .$ext);
+
+              }
+           }
+
+        ?>
 
         </div>
 

@@ -137,7 +137,10 @@ window.onload = function(){
     }
     imageFileInput.onchange = function(event){ 
         var getImagePath = URL.createObjectURL(event.target.files[0]);
-        var img = document.createElement("img")
+        var fileData = new FormData(); 
+        fileData.append("file", $('#imageFile').prop('files')[0]);
+        fileData.append("groupID",$('[name="activeMessageGroup"]').attr("id"));
+        var img = document.createElement("img");
         img.setAttribute("src",  getImagePath );
         var div = document.createElement("div"); 
         div.setAttribute("class", "sent"); 
@@ -147,9 +150,17 @@ window.onload = function(){
         //Make messages scroll to bottom
         document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
 
-        var requestObj = { 
-
-        }
+        $.ajax({
+            url: "../sendMessage.php",
+            type: "POST",
+            data: fileData,
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(data){
+                console.log(data);
+            }
+        });
     }
 
     //function to get current Time
@@ -224,7 +235,11 @@ $(document).ready(function(){ //AJAX messages requesting
                 div.append("<p class='sendername'>" + result[i][3] + "</p>");
                 currentSender = result[i][2];
             }
-            div.append("<p> <span>" + result[i][0] +"</span></p>");
+            if(result[i][5] == "Img"){ 
+                div.append("<img src='../" + result[i][6] + "'>");
+            } else { 
+                div.append("<p> <span>" + result[i][0] +"</span></p>");
+            }
             $("#messageSection").append(div);
             
         }
