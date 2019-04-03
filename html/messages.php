@@ -171,7 +171,7 @@
                 <i id="sendImageButton" name="sendImageButton" class="far fa-image" title="Send Image"></i>
                 <input id="imageFile" name="sendImage" type="file" accept="image/*" hidden/>
                 <i id="sendGIFButton" class="fas fa-film" title="Send GIF"></i>
-                <i class="fas fa-paperclip" title="Send File"></i>
+                <i id="thumbsup" class="fas fa-thumbs-up"></i>
                 <i class="fas fa-map-marker-alt" title="Send Location"></i>
         </div> 
 

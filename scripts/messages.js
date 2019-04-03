@@ -150,6 +150,10 @@ window.onload = function(){
 
     });
 
+    //send thumbsup
+    $("#thumbsup").click(function(){ 
+        sendMessage("👍");
+    });
     //Make new message div show up when message button clicked 
     var newMessageButton = document.getElementById("newMessage");
     var modalMessage = document.getElementById('myModalMessage');

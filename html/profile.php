@@ -17,11 +17,12 @@ if(isset($_GET["profileId"])){
   if ($_SESSION["id"]!=$_GET["profileId"]){
     $id = $_GET["profileId"] ;
     $myid= $_SESSION["id"];
-    $query = "SELECT * FROM contacts WHERE contacts.UserID = $myid"; //check if thier friends already
+    $query = "SELECT * FROM Contacts WHERE Contacts.UserID = $myid"; //check if thier friends already
     $result = runQuery($connection, $query); 
-    $row = mysqli_fetch_array($result);
-    if(strpos($row["ContactID"],$id)!== false){
-      $added=true;
+    while($row = mysqli_fetch_array($result)){ 
+      if(strpos($row["ContactID"],$id)!== false){
+        $added=true;
+      }
     }
     $editable = false;
   }
@@ -132,7 +133,7 @@ $row = mysqli_fetch_array($result);
               </tr>
               <tr> 
                 <td><p>Birthday: </p></td>
-                <td><input value =<?php echo "'" .substr($row["Birthday"],0,10). "'"?> name="birthday" type="text"<?php if(!$editable){echo "readOnly";}?> ></td>
+                <td><input value =<?php echo "'" .substr($row["Birthday"],0,10). "'"?> name="birthday" type="date"<?php if(!$editable){echo "readOnly";}?> ></td>
               </tr>
               <tr> 
                 <td><p>Interests: </p></td>
@@ -147,9 +148,6 @@ $row = mysqli_fetch_array($result);
             <div class="upload-btn-wrapper">
               <button class="btn-upload"><h3>Upload Photo</h3></button>
               <input type="file" id="photoFile" name="photoFile" accept="image/*" onchange="uploadPhoto(this);" />
-            </div>
-            <div class="upload-btn-wrapper">
-              <button class="btn-remove" onclick="removePhoto(this);"><h3>Remove Photo</h3></button>
             </div>
           </div>
         </div>
