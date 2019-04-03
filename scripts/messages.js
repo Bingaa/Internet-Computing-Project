@@ -70,30 +70,36 @@ window.onload = function(){
     //Make messages scroll to bottom
     document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
 
+    var sendMessage = function(input){ 
+        var div = document.createElement("div");
+        div.setAttribute("class", "sent"); 
+        var message = document.createElement("p"); 
+        div.setAttribute("title", getTime()); 
+        div.appendChild(message);
+        var text = document.createElement("span"); 
+        text.innerHTML = input; 
+        if(text.querySelectorAll("img")){ 
+            text.style.backgroundColor = "white";
+        }
+        message.appendChild(text); 
+        document.getElementById("messageSection").appendChild(div);
+        document.getElementById("chatInput").value = "";
+        //Make messages scroll to bottom
+        document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
+
+        //store message in db 
+        //need groupID and createDate
+        $groupId = $('[name="activeMessageGroup"]').attr("id");
+        $.post( "../sendMessage.php", { groupID: $groupId, content: text.innerHTML}, function(response){ 
+            console.log(response);
+        });
+
+    }
     //Make message appear in chat 
     var input = document.getElementById("chatInput");
     input.addEventListener("keyup", function(event) {
         if (event.keyCode === 13 && document.getElementById("chatInput").value) {
-            var div = document.createElement("div");
-            div.setAttribute("class", "sent"); 
-            var message = document.createElement("p"); 
-            div.setAttribute("title", getTime()); 
-            div.appendChild(message);
-            var text = document.createElement("span"); 
-            text.innerHTML = document.getElementById("chatInput").value; 
-            message.appendChild(text); 
-            document.getElementById("messageSection").appendChild(div);
-            document.getElementById("chatInput").value = "";
-            //Make messages scroll to bottom
-            document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
-
-            //store message in db 
-            //need groupID and createDate
-            $groupId = $('[name="activeMessageGroup"]').attr("id");
-            $.post( "../sendMessage.php", { groupID: $groupId, content: text.innerHTML}, function(response){ 
-                console.log(response);
-            });
-
+            sendMessage(document.getElementById("chatInput").value);
         }
     });
 
@@ -103,6 +109,12 @@ window.onload = function(){
     emoji.onclick = function(){ 
         modal.style.display = "block";
     }
+    var gif = document.getElementById("sendGIFButton");
+    var gifmodal = document.getElementById('gifModal');
+    gif.onclick = function(){ 
+        document.getElementById('gifModal').style.display = "block";
+    }
+
 
     //Click event for emoji to show up on input
     var emojiContainer = document.getElementById("emojiContent").querySelectorAll("span");
@@ -111,6 +123,30 @@ window.onload = function(){
             document.getElementById("chatInput").value += emojiContainer[i].innerHTML;
         }   
     }
+
+    //GIFs
+    $("#gifInput").keyup(function(){ 
+        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=" + $(this).val() +"&api_key=SmVqSeC7dggjzVNUL4qz8oSiDNad53P7&limit=15");
+        xhr.done(function(response) { 
+            console.log("success got data", response); 
+            let embed = "";
+            let gif;
+            $("#listGifs").empty(); 
+            for(let i = 0; i < response.data.length; i++){ 
+                embed = response.data[i]["images"]["downsized"]["url"];
+                gif = $("<img class='giffy' src='" + embed + "' width='285' height = '250' ></img>");
+                gif.click(function(){ 
+                    sendMessage("<img class='giffy' src='" + $(this).attr("src") + "' width='285' height = '250' ></img>");
+                });
+                $("#listGifs").append(gif);
+            }
+
+            if(response.data.length == 0){ 
+                $("#listGifs").append("<p class='no-gif'>No Matching GIFs Found </p>");
+            }
+        });
+
+    });
 
     //Make new message div show up when message button clicked 
     var newMessageButton = document.getElementById("newMessage");
@@ -126,6 +162,9 @@ window.onload = function(){
         }
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+        if (event.target == gifmodal) {
+            gifmodal.style.display = "none";
         }
     }
 
@@ -224,8 +263,14 @@ var loadMessages = function(result){
         if(result[i][5] == "Img"){ 
             div.append("<img src='" + result[i][6] + "'>");
         } else { 
-            div.append("<p> <span>" + result[i][0] +"</span></p>");
+            if(result[i][0].includes('<img class=')){ 
+                div.append("<p> <span class=\"gif-span\">" + result[i][0] +"</span></p>");
+                console.log("here");
+            } else { 
+                div.append("<p> <span class=\"text-span\">" + result[i][0] +"</span></p>");
+            }
         }
+
         $("img").on("error", function(){ 
             $(this).attr("src","../images/error.png");
         })

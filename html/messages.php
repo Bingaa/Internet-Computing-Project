@@ -157,11 +157,20 @@
                   <span>💔</span>
                 </div>
               </div>
+
+              <div id="gifModal" class="modal-gif">
+                <div id="gifContent" class="modal-content-gif">
+                  <input id="gifInput" type=”text” placeholder="Search for GIFs!">
+                  <div id="listGifs">
+
+                  </div>
+                </div>
+              </div>
                 <input id="chatInput"type="text" placeholder="Type a message...">
                 <i id="emojiButton" class="far fa-smile" title="Send Emoji"></i>
                 <i id="sendImageButton" name="sendImageButton" class="far fa-image" title="Send Image"></i>
                 <input id="imageFile" name="sendImage" type="file" accept="image/*" hidden/>
-                <i class="fas fa-camera" title="Take Picture"></i>
+                <i id="sendGIFButton" class="fas fa-film" title="Send GIF"></i>
                 <i class="fas fa-paperclip" title="Send File"></i>
                 <i class="fas fa-map-marker-alt" title="Send Location"></i>
         </div> 

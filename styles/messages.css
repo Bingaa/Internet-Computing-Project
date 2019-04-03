@@ -16,7 +16,6 @@
     padding-top: 15px; 
     font-size: 30px; 
 }
-
 .chatSel active{ 
     background-color:#e6e6e6;
 }
@@ -45,6 +44,10 @@
     height:500px;
     margin-top:62px; 
     overflow-y:scroll; 
+}
+
+.chat-section .giffy{ 
+    display: none; 
 }
 
 .chat-section table { 
@@ -118,14 +121,18 @@
 }
 
 
-.message-section .received p span{ 
-    text-align: left; 
+.message-section .received p span.text-span{  
     border-radius: 10px; 
-    background-color: #e6e6e6; 
+    background-color: rgb(125, 166, 253);
+    color: white; 
     padding:5px; 
     padding-right:7px; 
     padding-left:7px; 
     overflow-wrap: break-word; 
+}
+
+.message-section .received p span.gif-span{  
+    background-color: white;
 }
 
 .message-section .sent { 
@@ -147,7 +154,7 @@
     margin: 0px; 
     font-size: 9px;
 }
-.message-section .sent p span{  
+.message-section .sent p span.text-span{  
     border-radius: 10px; 
     background-color: rgb(125, 166, 253);
     color: white; 
@@ -157,6 +164,9 @@
     overflow-wrap: break-word; 
 }
 
+.message-section .sent p span.gif-span{  
+    background-color: white;
+}
 
 .input-box { 
     margin-left:250px;
@@ -208,6 +218,30 @@
     font-size: 25px; 
   }
 
+  .modal-gif {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 230px; /* Location of the box */
+    padding-left: 130px; 
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0); /* Black w/ opacity */
+  }
+  
+  .modal-content-gif {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px; 
+    width: 300px; 
+    height: 400px;
+    overflow-y: scroll;
+    font-size: 25px; 
+  }
   .modal-message {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -329,3 +363,8 @@ ul {
 
 }
 
+.no-gif{ 
+    color: rgb(125, 166, 253);
+    text-align: center !important;
+    font-size: 20px;
+}

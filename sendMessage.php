@@ -14,8 +14,10 @@ if(!isset($_POST["content"])){
     $src = $_FILES['file']['tmp_name'];
     $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
     $targ = "images/messages/" . $_SESSION["id"]. time() . "." . $ext; 
+
     move_uploaded_file($src, $targ);
     $groupID = $_POST["groupID"];
+    $targ = "../" . $targ; 
     $query = "INSERT INTO Message (Content, GroupID, UserID, SenderName, Type, ImageSource) VALUES ('', $groupID, $id, '$senderName', 'Img', '$targ')";
     $results = runQuery($connection, $query);
     echo $targ; 
