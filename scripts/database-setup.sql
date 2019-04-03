@@ -26,11 +26,17 @@ CREATE TABLE `User` (
 ) ENGINE=innodb DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`, `Status` )
-VALUES ('andrew69', 'andrew69', 'Andrew', 'Fong', 'fong7680@mylaurier.ca', 'Just chillllaaanggg XD');
+VALUES ('andrew12345', 'andrew12345', 'Andrew', 'Fong', 'fong7680@mylaurier.ca', 'Just chilllling');
 INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`, `Status` )
-VALUES ('andrew70', 'andrew70', 'Andrea', 'Fong', 'fong7680@mylaurier.ca', 'fEEDING');
+VALUES ('shiv12345', 'shiv12345', 'Shiv', 'Gupta', 'fong7680@mylaurier.ca', 'At the Library');
 INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`, `Status` )
-VALUES ('alex', 'alex', 'Alex', 'yang', 'yang7680@mylaurier.ca', 'taking a toasty dab');
+VALUES ('alex12345', 'alex12345', 'Alex', 'Yang', 'yang7680@mylaurier.ca', '');
+INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`, `Status` )
+VALUES ('jasmaan123', 'jasmaan123', 'Jasmaan', 'Panesar', 'jasmaanp@hotmail.com', '');
+INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`, `Status` )
+VALUES ('kevin12345', 'kevin12345', 'Kevin', 'Qiu', 'kevin@hotmail.com', '');
+INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`, `Status` )
+VALUES ('bowen12345', 'Bowen12345', 'Bowen', 'Law', 'kevin@hotmail.com', '');
 
 #
 # Table structure for table 'Contacts'
@@ -48,6 +54,62 @@ INSERT INTO Contacts (`UserID`, `ContactID`)
 VALUES (1, 2);
 INSERT INTO Contacts (`UserID`, `ContactID`)
 VALUES (1, 3);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (1, 4);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (1, 5);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (1, 6);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (2, 1);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (2, 3);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (2, 4);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (2, 5);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (2, 6);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (3, 1);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (3, 2);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (3, 4);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (3, 5);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (3, 6);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (4, 1);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (4, 2);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (4, 3);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (4, 5);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (4, 6);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (5, 1);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (5, 2);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (5, 3);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (5, 4);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (5, 6);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (6, 1);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (6, 2);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (6, 3);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (6, 4);
+INSERT INTO Contacts (`UserID`, `ContactID`)
+VALUES (6, 5);
 
 #
 # Table structure for table 'Contacts'
@@ -65,16 +127,8 @@ CREATE TABLE `Group` (
 
 SET autocommit=1;
 
-
-
 INSERT INTO `Group` (`Groupname`,`GroupImage`)
-VALUES ('Group1','../images/group.png');
-
-INSERT INTO `Group` (`Groupname`,`GroupImage`)
-VALUES ('Group2','../images/group.png');
-
-INSERT INTO `Group` (`Groupname`,`GroupImage`)
-VALUES ('Group3','../images/group.png');
+VALUES ('Squad Chat','../images/group.png');
 
 
 #
@@ -99,11 +153,16 @@ VALUES (1, 1);
 INSERT INTO `UserGroup`(`UserID`, `GroupID`)
 VALUES (2, 1);
 INSERT INTO `UserGroup`(`UserID`, `GroupID`)
-VALUES (1, 2);
+VALUES (3, 1);
 INSERT INTO `UserGroup`(`UserID`, `GroupID`)
-VALUES (3, 2);
+VALUES (4, 1);
+INSERT INTO `UserGroup`(`UserID`, `GroupID`)
+VALUES (5, 1);
+INSERT INTO `UserGroup`(`UserID`, `GroupID`)
+VALUES (6, 1);
+
 #
-# Table structure for table 'User'
+# Table structure for table 'UserGroup'
 #
 
 DROP TABLE IF EXISTS `Message`;
@@ -119,15 +178,6 @@ CREATE TABLE `Message` (
   `SenderName` VARCHAR(50) NOT NULL,  
   PRIMARY KEY (`MessageID`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci;;
-
-INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`, `SenderName` )
-VALUES ("first sikh message", '1000-01-01 01:23:00', 1, 1, 'Andrew Fong' );
-INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`, `SenderName` )
-VALUES ("first sikh message", '1000-01-01 01:23:00', 1, 2, 'Andrea Fong' );
-INSERT INTO `Message`(`Content`, `CreateDate`,`GroupID`,`UserID`, `SenderName` )
-VALUES ("second sikh message", '2000-01-01 02:45:00', 2, 3, 'Alex yang');
-
-
 
 
 SET autocommit=1;
