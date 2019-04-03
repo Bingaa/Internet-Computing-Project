@@ -147,6 +147,14 @@
                   <span>🤧</span>
                   <span>🍑</span>
                   <span>🍆</span>
+                  <span>❤️</span>
+                  <span>🧡</span>
+                  <span>💛</span>
+                  <span>💚</span>
+                  <span>💙</span>
+                  <span>💜</span>
+                  <span>🖤</span>
+                  <span>💔</span>
                 </div>
               </div>
                 <input id="chatInput"type="text" placeholder="Type a message...">
