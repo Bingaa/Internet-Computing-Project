@@ -9,8 +9,10 @@ $firstName = $_REQUEST["firstName"];
 $lastName = $_REQUEST["lastName"];
 $email = $_REQUEST["email"];
 
+$hashed_password = password_hash($password,PASSWORD_DEFAULT);
+
 $query = "INSERT INTO User (`UserName`, `Password` , `FirstName` , `LastName` , `Email`)
-             VALUES ('" .$username."','" .$password."','" .$firstName."','" .$lastName."','" .$email . "')"; 
+             VALUES ('" .$username."','" .$hashed_password."','" .$firstName."','" .$lastName."','" .$email . "')"; 
 $results = runQuery($connection, $query);
 if($results != false){ 
     $query = "SELECT UserID FROM User WHERE UserName = '" .$username ."'"; 
