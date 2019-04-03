@@ -204,6 +204,39 @@ window.onload = function(){
 }
 
 let messageIndicator = 0; 
+let messageTime = "";
+
+var loadMessages = function(result){ 
+    let currentSender = 0; 
+    let div; 
+    for(let i = 0; i < result.length; i++){
+        //change class based on sender
+        if(result[i][4] != result[i][2]){ 
+            div = $("<div class='received' title='" + result[i][1] +  "'> </div>");
+        } else { 
+            div = $("<div class='sent' title='" + result[i][1] +  "'> </div>");
+        }
+        //add small text indicating who sender of message is if previously it was someone else
+        if(currentSender != result[i][2] ){ 
+            div.append("<p class='sendername'>" + result[i][3] + "</p>");
+            currentSender = result[i][2];
+        }
+        if(result[i][5] == "Img"){ 
+            div.append("<img src='" + result[i][6] + "'>");
+        } else { 
+            div.append("<p> <span>" + result[i][0] +"</span></p>");
+        }
+        $("img").on("error", function(){ 
+            $(this).attr("src","../images/error.png");
+        })
+        $("#messageSection").append(div);
+        
+    }
+    if(result[result.length-1] && result[result.length-1][1] ){ 
+        messageTime = result[result.length-1][1];
+        document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight;
+    }
+}
 
 $(document).ready(function(){ //AJAX messages requesting
     $(".chatSel").click(function(event){
@@ -214,43 +247,21 @@ $(document).ready(function(){ //AJAX messages requesting
         $(".message-section-header").empty(); 
         $(".message-section-header").append("<h3>" + $(this).find("#name").text() + "</h3>" );
         var request = $.ajax({
-        type:"GET",
-        url: "../scripts/messageRequest.php",
-        data:{input:$(this).attr("id")},
-        dataType:'JSON',
+            type:"GET",
+            url: "../scripts/messageRequest.php",
+            data:{input:$(this).attr("id")},
+            dataType:'JSON',
         });
         request.done(function(result){
         //Select Element by ID
         //Parse JSON and insert into chat-based on whether is received or sent
         $('#messageSection').empty();
-        let currentSender = 0; 
-        let div; 
-        for(let i = 0; i < result.length; i++){
-            //change class based on sender
-            if(result[i][4] != result[i][2]){ 
-                div = $("<div class='received' title='" + result[i][1] +  "'> </div>");
-            } else { 
-                div = $("<div class='sent' title='" + result[i][1] +  "'> </div>");
-            }
-            //add small text indicating who sender of message is if previously it was someone else
-            if(currentSender != result[i][2] ){ 
-                div.append("<p class='sendername'>" + result[i][3] + "</p>");
-                currentSender = result[i][2];
-            }
-            if(result[i][5] == "Img"){ 
-                div.append("<img src='../" + result[i][6] + "'>");
-            } else { 
-                div.append("<p> <span>" + result[i][0] +"</span></p>");
-            }
-            $("#messageSection").append(div);
-            
-        }
+        loadMessages(result);
         //make so if new message in chat automatically chat div scrolls to bottom 
-        if(messageIndicator < result.length){ 
-            messageIndicator = result.length; 
-            document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
-        }
-
+ 
+        document.getElementById("messageSection").scrollTop = document.getElementById("messageSection").scrollHeight; 
+        
+        messageTime = result[result.length-1][1];
         });
         request.fail(function(jqXHR,textStatus){
         //
@@ -263,7 +274,13 @@ $(document).ready(function(){ //AJAX messages requesting
     $(".chatSel").first().trigger('click');
 
     var updateMsg = function(){ 
-        $('[name="activeMessageGroup"]').trigger('click');
+        //$('[name="activeMessageGroup"]').trigger('click');
+        var request = $.get("../scripts/messageRequest.php?input=" + $('[name="activeMessageGroup"]').attr("id") + "&time='" + messageTime + "'");
+        request.done(function(result){
+            result = JSON.parse(result);
+            loadMessages(result);
+        });
+
     }; 
     setInterval(updateMsg,500);
 });
