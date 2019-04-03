@@ -248,11 +248,9 @@ window.onload = function(){
 
 }
 
-let messageIndicator = 0; 
 let messageTime = "";
-
+let currentSender = 0; 
 var loadMessages = function(result){ 
-    let currentSender = 0; 
     let div; 
     for(let i = 0; i < result.length; i++){
         //change class based on sender
