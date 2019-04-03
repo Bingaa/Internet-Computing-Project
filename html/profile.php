@@ -148,9 +148,6 @@ $row = mysqli_fetch_array($result);
               <button class="btn-upload"><h3>Upload Photo</h3></button>
               <input type="file" id="photoFile" name="photoFile" accept="image/*" onchange="uploadPhoto(this);" />
             </div>
-            <div class="upload-btn-wrapper">
-              <button class="btn-remove" onclick="removePhoto(this);"><h3>Remove Photo</h3></button>
-            </div>
           </div>
         </div>
         </form>   
