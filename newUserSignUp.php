@@ -34,35 +34,36 @@ if (!mysqli_stmt_prepare($stmt,$querybuilder)){
 
 
 
-if($results != false){ 
 
 
-    $querybuilder = "SELECT UserID FROM User WHERE UserName = ?";
-    $stmt = mysqli_stmt_init($connection);
-    if (!mysqli_stmt_prepare($stmt,$querybuilder)){
+    $querybuilder2 = "SELECT UserID FROM User WHERE UserName = ?";
+    $stmt2 = mysqli_stmt_init($connection);
+    if (!mysqli_stmt_prepare($stmt2,$querybuilder2)){
         echo "SQL Statement failure";
     }else{
-        mysqli_stmt_bind_param($stmt,"s", $username);
+        mysqli_stmt_bind_param($stmt2,"s", $username);
         //run param inside database
-        mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
-        $id = mysqli_fetch_assoc($results)["UserID"];      
+        mysqli_stmt_execute($stmt2);
+        $results2 = mysqli_stmt_get_result($stmt2);
+        $id = mysqli_fetch_assoc($results2)["UserID"];
+     
         session_start(); 
         $_SESSION["id"] = $id; 
         $_SESSION["fullName"] = $firstName . " " . $lastName; 
         echo "true"; 
     }
-
     // $query = "SELECT UserID FROM User WHERE UserName = '" .$username ."'"; 
     // $results = runQuery($connection, $query);  
+    // $id = mysqli_fetch_assoc($results)["UserID"];
+    // session_start(); 
+    // $_SESSION["id"] = $id; 
+    // $_SESSION["fullName"] = $firstName . " " . $lastName; 
+    // echo "true"; 
+    
 
 
 
 
 
-
-} else { 
-    echo "false"; 
-}
 
 ?>
