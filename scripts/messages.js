@@ -128,7 +128,7 @@ window.onload = function(){
 
     //GIFs
     $("#gifInput").keyup(function(){ 
-        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=" + $(this).val() +"&api_key=SmVqSeC7dggjzVNUL4qz8oSiDNad53P7&limit=15");
+        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=" + $(this).val() +"&api_key=SmVqSeC7dggjzVNUL4qz8oSiDNad53P7&limit=30");
         xhr.done(function(response) { 
             console.log("success got data", response); 
             let embed = "";
@@ -162,7 +162,7 @@ window.onload = function(){
     }
 
     //Make modals disappear
-    window.onclick = function(event) {
+    window.onmousedown = function(event) {
         if (event.target == modalMessage) {
             modalMessage.style.display = "none";
         }
