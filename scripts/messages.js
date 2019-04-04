@@ -161,6 +161,10 @@ window.onload = function(){
         modalMessage.style.display = "block";
     }
 
+    $("#send").click(function(){ 
+        sendMessage(document.getElementById("chatInput").value);
+    });
+
     //Make modals disappear
     window.onmousedown = function(event) {
         if (event.target == modalMessage) {

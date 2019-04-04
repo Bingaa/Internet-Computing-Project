@@ -167,12 +167,12 @@
                 </div>
               </div>
                 <input id="chatInput"type="text" placeholder="Type a message...">
+                <i id="send" class="fas fa-chevron-circle-right" title="Send Message"></i>
                 <i id="emojiButton" class="far fa-smile" title="Send Emoji"></i>
                 <i id="sendImageButton" name="sendImageButton" class="far fa-image" title="Send Image"></i>
                 <input id="imageFile" name="sendImage" type="file" accept="image/*" hidden/>
                 <i id="sendGIFButton" class="fas fa-film" title="Send GIF"></i>
                 <i id="thumbsup" class="fas fa-thumbs-up"></i>
-                <i class="fas fa-map-marker-alt" title="Send Location"></i>
         </div> 
 
         <?php 
