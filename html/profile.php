@@ -57,17 +57,33 @@ if(isset($_POST["save"])){
       }
    }
 
-   if($fname != ""){ 
-     $query="UPDATE user SET Job='$job', Status='$status', Location='$location', Birthday='$birthday', Interests='$interests', Image='$fname' WHERE UserID = $id;";
+   if($fname != ""){ //bind here
+
+    $querybuilder="UPDATE user SET Job=?, Status=?, Location=?, Birthday=?, Interests=?, Image='$fname' WHERE UserID = $id;";
+
+    //  $query="UPDATE user SET Job='$job', Status='$status', Location='$location', Birthday='$birthday', Interests='$interests', Image='$fname' WHERE UserID = $id;";
    } else { 
-    $query="UPDATE user SET Job='$job', Status='$status', Location='$location', Birthday='$birthday', Interests='$interests' WHERE UserID = $id;";
+    $querybuilder="UPDATE user SET Job=?, Status=?, Location=?, Birthday=?, Interests=? WHERE UserID = $id;";
+
+    // $query="UPDATE user SET Job='$job', Status='$status', Location='$location', Birthday='$birthday', Interests='$interests' WHERE UserID = $id;";
    }
    
     
-    if(isset($_POST['save'])){
-      $result = runQuery($connection, $query);
+      if(isset($_POST['save'])){
+
+
+        // $result = runQuery($connection, $query);
+      $stmt = mysqli_stmt_init($connection);
+      if (!mysqli_stmt_prepare($stmt,$querybuilder)){
+          echo "SQL Statement failure";
+      }else{
+          mysqli_stmt_bind_param($stmt,"sssss", $job, $status, $location, $birthday, $interests);
+          //run param inside database
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
+      }
       $message =  "Saved!";
-      
+  
     }
   }else if (!$added){
     $query="INSERT INTO contacts VALUES ($myid,$id);";
