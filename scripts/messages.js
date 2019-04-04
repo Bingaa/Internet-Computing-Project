@@ -329,11 +329,42 @@ $(document).ready(function(){ //AJAX messages requesting
     $(".chatSel").first().trigger('click');
 
     var updateMsg = function(){ 
-        //$('[name="activeMessageGroup"]').trigger('click');
         var request = $.get("../scripts/messageRequest.php?input=" + $('[name="activeMessageGroup"]').attr("id") + "&time='" + messageTime + "'");
         request.done(function(result){
             result = JSON.parse(result);
             loadMessages(result);
+        });
+        var request = $.get("../updateMessageGroups.php");
+        request.done(function(result){
+            result = JSON.parse(result);
+            //console.log(result);
+            let row; 
+            for(let i = 0; i < result.length; i++){ 
+                row = $("#" + result[i].groupID); 
+                if(row.length){ 
+                    row.children("img").attr("src",result[i].groupImage);
+                    row.children("h4").html(result[i].groupName);
+                    row.children("p").html(result[i].msg);
+                    row.children("p.timestamp").html(result[i].time.substring(10, 16));
+                    row.css("background-color", "aliceblue");
+                } else { 
+                    let trRow = $("<tr> </tr>");
+                    row = $("<td class='chatSel' id='" + result[i].groupID + "'>"); 
+                    row.append("<img id='profile' src='" + result[i].groupImage + "'>");
+                    row.append("<h4 id='name'>" + result[i].groupName + "</h4>");
+                    row.append("<p class='timestamp'>" + result[i].time.substring(10, 16) + "</p>");
+                    row.append("<p>" + result[i].msg + "</p>"); 
+                    row.css("background-color", "aliceblue");
+                    row.click = $(".chatSel").click; 
+                    trRow.append(row);
+                    $("#messages-sidebar").append(trRow);
+                }
+                let rowCount = $("#messages-sidebar tr").length; 
+                while(rowCount > 0){ 
+                    row.parents('tr:first').insertBefore($(row).parents('tr:first').prev());
+                    rowCount--; 
+                }
+            }
         });
 
     }; 
