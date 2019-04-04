@@ -27,11 +27,24 @@ if(isset($_SESSION["id"])){
             $userName = $_POST["userName"]; 
             $password = $_POST["password"]; 
             
+            //bind here
 
-            $query = "SELECT * FROM User WHERE UserName = '" .$userName ."'"; 
+            $querybuilder = "SELECT * FROM user WHERE UserName=?";
+            $stmt = mysqli_stmt_init($connection);
+            if (!mysqli_stmt_prepare($stmt,$querybuilder)){
+                echo "SQL Statement failure";
+            }else{
+                mysqli_stmt_bind_param($stmt,"s", $userName);
+                //run param inside database
+                mysqli_stmt_execute($stmt);
+                $results = mysqli_stmt_get_result($stmt);
+            }
+            $result = mysqli_fetch_assoc($results);
+            
+            //old working code
+            // $query = "SELECT * FROM User WHERE UserName = '" .$userName ."'"; 
+            // $results = runQuery($connection, $query);  
 
-            $results = runQuery($connection, $query);  
-            $result = mysqli_fetch_assoc($results);   
             
 
             if(empty($result["UserID"])){ 
