@@ -292,17 +292,18 @@ var loadMessages = function(result){
 }
 
 $(document).ready(function(){ //AJAX messages requesting
-    $(".chatSel").click(function(event){
+
+    let selectChat = function(item){ 
         $(".chatSel").css("background-color", "white");
         $(".chatSel").attr("name", "");
-        $(this).css("background-color", "#e6e6e6");
-        $(this).attr("name", "activeMessageGroup");
+        $(item).css("background-color", "#e6e6e6");
+        $(item).attr("name", "activeMessageGroup");
         $(".message-section-header").empty(); 
-        $(".message-section-header").append("<h3>" + $(this).find("#name").text() + "</h3>" );
+        $(".message-section-header").append("<h3>" + $(item).find("#name").text() + "</h3>" );
         var request = $.ajax({
             type:"GET",
             url: "../scripts/messageRequest.php",
-            data:{input:$(this).attr("id")},
+            data:{input:$(item).attr("id")},
             dataType:'JSON',
         });
         request.done(function(result){
@@ -322,8 +323,9 @@ $(document).ready(function(){ //AJAX messages requesting
         //
         alert("Messages could not be found");
         });
-
-      
+    }
+    $(".chatSel").click(function(){
+      selectChat(this); 
     });
 
     $(".chatSel").first().trigger('click');
@@ -355,7 +357,9 @@ $(document).ready(function(){ //AJAX messages requesting
                     row.append("<p class='timestamp'>" + result[i].time.substring(10, 16) + "</p>");
                     row.append("<p>" + result[i].msg + "</p>"); 
                     row.css("background-color", "aliceblue");
-                    row.click = $(".chatSel").click; 
+                    row.click(function(){
+                        selectChat(this); 
+                    });
                     trRow.append(row);
                     $("#messages-sidebar").append(trRow);
                 }
