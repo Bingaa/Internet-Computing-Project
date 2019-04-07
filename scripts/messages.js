@@ -166,7 +166,7 @@ window.onload = function(){
     });
 
     //Make modals disappear
-    window.onmousedown = function(event) {
+    window.onclick = function(event) {
         if (event.target == modalMessage) {
             modalMessage.style.display = "none";
         }

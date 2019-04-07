@@ -367,3 +367,7 @@ ul {
     text-align: center !important;
     font-size: 20px;
 }
+
+.giffy { 
+    background: url('../images/loading.gif') no-repeat scroll center center;
+  }
